@@ -1,0 +1,14 @@
+{
+  "workbench.colorCustomizations": {
+    "sash.hoverBorder": "#59df4c",
+    "statusBar.background": "#35d226",
+    "statusBar.border": "#35d226",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#2aa71e",
+    "statusBarItem.remoteBackground": "#35d226",
+    "statusBarItem.remoteForeground": "#15202b",
+    "tab.activeBorder": "#59df4c"
+  },
+  "peacock.color": "#35d226",
+  "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+}
