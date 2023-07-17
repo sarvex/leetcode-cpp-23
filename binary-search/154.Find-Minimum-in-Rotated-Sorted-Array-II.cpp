@@ -1,11 +1,8 @@
 /**
  * @link https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii
  */
-#include <vector>
-using std::vector;
-
 #include <algorithm>
-using std::min;
+#include <vector>
 
 class Solution
 {

@@ -2,12 +2,11 @@
  * @link https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
  */
 #include <vector>
-using std::vector;
 
 class Solution
 {
 public:
-  int findMin(vector<int> &nums)
+  int findMin(std::vector<int> &nums)
   {
     int i = 0, j = nums.size() - 1;
     if (nums[j] >= nums[i])
