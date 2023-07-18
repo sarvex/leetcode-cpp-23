@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "tests/Dynamic_Programming/1027.Longest-Arithmetic-Sequence",
+		"source" : "tests/Dynamic_Programming/1027.Longest-Arithmetic-Sequence"
+	}
+}

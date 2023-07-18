@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "tests/BFS/1036.Escape-a-Large-Maze",
+		"source" : "tests/BFS/1036.Escape-a-Large-Maze"
+	}
+}
