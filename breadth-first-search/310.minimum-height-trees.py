@@ -7,7 +7,7 @@ class Solution:
         """
         if (n==1): return [0]
         if (n==2): return [0,1]
-    
+
         degree = [0]*n
         Neighbor = [[] for i in range(n)];
         for edge in edges:
@@ -15,13 +15,13 @@ class Solution:
             degree[edge[1]]+=1
             Neighbor[edge[0]].append(edge[1])
             Neighbor[edge[1]].append(edge[0])
-        
+
         q = collections.deque()
         for i in range(n):
             if degree[i]==1:
                 q.append(i)
-                
-        count = 0        
+
+        count = 0
         while (q):
             L = len(q)
             for i in range(L):
@@ -35,4 +35,3 @@ class Solution:
                 result = []
                 while (q): result.append(q.popleft())
                 return result
-        

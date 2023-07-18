@@ -2,31 +2,22 @@
  * @link https://leetcode.com/problems/word-ladder-ii
  */
 
-#include <vector>
-using std::vector;
-
-#include <unordered_set>
-using std::unordered_set;
-
-#include <unordered_map>
-using std::unordered_map;
-
-#include <string>
-using std::string;
-
 #include <queue>
-using std::queue;
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 
 class Solution
 {
 public:
-  unordered_set<string> wordSet;
-  unordered_map<string, vector<string>> next;
-  unordered_map<string, unordered_set<string>> prev;
-  vector<vector<string>> results;
-  string beginWord;
+  std::unordered_set<std::string> wordSet;
+  std::unordered_map<std::string, std::vector<std::string>> next;
+  std::unordered_map<std::string, std::unordered_set<std::string>> prev;
+  std::vector<std::vector<std::string>> results;
+  std::string beginWord;
 
-  vector<vector<string>> findLadders(string beginWord, string endWord, vector<string> &wordList)
+  std::vector<std::vector<std::string>> findLadders(std::string beginWord, std::string endWord, std::vector<std::string> &wordList)
   {
     wordList.push_back(beginWord);
 
@@ -39,12 +30,12 @@ public:
 
     for (int i = 0; i < wordList.size(); i++)
     {
-      string str = wordList[i];
+      std::string str = wordList[i];
       for (int k = 0; k < str.size(); k++)
       {
         for (char ch = 'a'; ch <= 'z'; ch++)
         {
-          string temp = str;
+          std::string temp = str;
           temp[k] = ch;
           if (temp == str)
             continue;
@@ -54,8 +45,8 @@ public:
       }
     }
 
-    unordered_set<string> visited;
-    queue<string> q;
+    std::unordered_set<std::string> visited;
+    std::queue<std::string> q;
     int flag = 0;
 
     q.push(beginWord);
@@ -64,7 +55,7 @@ public:
     while (!q.empty())
     {
       int len = q.size();
-      unordered_set<string> newVisited;
+      std::unordered_set<string> newVisited;
 
       for (int k = 0; k < len; k++)
       {
@@ -101,7 +92,7 @@ public:
     return results;
   }
 
-  void DFS(string word, vector<string> path)
+  void DFS(string word, std::vector<string> path)
   {
     if (word == beginWord)
     {
@@ -112,7 +103,7 @@ public:
 
     for (auto preStr : prev[word])
     {
-      vector<string> newPath = path;
+      std::vector<string> newPath = path;
       newPath.push_back(preStr);
       DFS(preStr, newPath);
     }

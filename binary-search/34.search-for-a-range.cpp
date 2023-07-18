@@ -6,7 +6,6 @@
 
 class Solution
 {
-
 private:
   static bool cmp1(int a, int b)
   {

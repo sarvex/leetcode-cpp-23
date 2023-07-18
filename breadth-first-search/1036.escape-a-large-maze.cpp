@@ -1,4 +1,7 @@
-class Solution {
+#include <vector>
+
+class Solution
+{
 
 private:
   using point_t = std::vector<int>;
@@ -9,14 +12,12 @@ private:
   }
 
 public:
-  bool isEscapePossible(vector<vector<int>>& blocked,
-                        vector<int>& source,
-                        vector<int>& target)
+  bool isEscapePossible(std::vector<std::vector<int>> &blocked, std::vector<int> &source, std::vector<int> &target)
   {
     // blocked points set, uint64_t is selected since it is larger than 1e6*le6
     std::unordered_set<uint64_t> bps;
 
-    for (auto &x: blocked)
+    for (auto &x : blocked)
       bps.insert(hash(x));
 
     auto e1 = enclose(source, bps, target);
@@ -26,11 +27,9 @@ public:
   }
 
 private:
-  bool enclose(const point_t &s,
-               const std::unordered_set<uint64_t> & b,
-               const point_t &d)
+  bool enclose(const point_t &s, const std::unordered_set<uint64_t> &b, const point_t &d)
   {
-    int max_points = (1+b.size()-1) * b.size()/2;
+    int max_points = (1 + b.size() - 1) * b.size() / 2;
 
     std::deque<point_t> Q;
     Q.push_back(s);
@@ -43,22 +42,20 @@ private:
       int &r = Q.front()[0];
       int &c = Q.front()[1];
 
-      static std::vector<std::pair<int, int>> ds
-      {
-        {0, 1}, {-1, 0}, {0, -1}, {1, 0}
-      };
+      static std::std::vector<std::pair<int, int>> ds{
+          {0, 1}, {-1, 0}, {0, -1}, {1, 0}};
 
-      for (auto &dir: ds)
+      for (auto &dir : ds)
       {
         auto rr = r + dir.first;
         auto cc = c + dir.second;
 
-        std::vector<int> p{rr, cc};
+        std::std::vector<int> p{rr, cc};
 
-        if (rr < 0 || rr >= 1e6                   || // out of bound
-            cc < 0 || cc >= 1e6                   || // out of bound
-            visited.find(hash(p)) != visited.end()|| // visited
-            b.find(hash(p)) != b.end()             ) // blocked
+        if (rr < 0 || rr >= 1e6 ||                    // out of bound
+            cc < 0 || cc >= 1e6 ||                    // out of bound
+            visited.find(hash(p)) != visited.end() || // visited
+            b.find(hash(p)) != b.end())               // blocked
           continue;
 
         if (p == d) // reached out to destination
