@@ -17,9 +17,9 @@ C++ as a standard cannot make everything constant because of _legacy_. But
 _Rust_ gained a lot of performance improvement just because it made everything
 constant. C++ can do the same but requires typing
 
-### IOCCC Programmers
+### [IOCCC](https://www.ioccc.org/) Programmers
 
-### for-int-i Programmers
+### for-int-i/Non-Range Programmers
 
 ### fortran Programmers
 
@@ -33,5 +33,23 @@ constant. C++ can do the same but requires typing
 
 ### STL-is-powerful Programmers
 
+### Two-finger-typist Programmers
+
+### Array programmers
+
+### Non-Auto programmers
+
+### Paper/Whiteboard/Interview programmer 
+
+### Notepad Programmers
+
+### Boost unaware programmers
+
+### MSVC Programmers
+
+### LL/AI3/VLL Programmers
+
 This is a hard fork of other repository, just to show new programmers how to
 write good c++ code
+
+@WARN this is a review-in-progress and in no way complete
