@@ -1,20 +1,17 @@
+#include <algorithm>
 #include <vector>
 
-class Solution
-{
+class Solution {
 public:
-  int shipWithinDays(vector<int> &weights, int D)
-  {
+  int shipWithinDays(std::vector<int> &weights, int D) {
     int left = INT_MAX;
     int right = 0;
-    for (auto x : weights)
-    {
-      left = min(left, x);
+    for (auto x: weights) {
+      left = std::min(left, x);
       right += x;
     }
 
-    while (left < right)
-    {
+    while (left < right) {
       int cap = left + (right - left) / 2;
       if (checkOK(weights, cap, D))
         right = cap;
@@ -25,15 +22,12 @@ public:
     return left;
   }
 
-  bool checkOK(vector<int> &weights, int cap, int D)
-  {
+  bool checkOK(std::vector<int> &weights, int cap, int D) {
     int count = 0;
-    for (int i = 0; i < weights.size();)
-    {
-      int j = i;
+    for (size_t i = 0; i < weights.size();) {
+      size_t j = i;
       int sum = 0;
-      while (j < weights.size() && sum + weights[j] <= cap)
-      {
+      while (j < weights.size() && sum + weights[j] <= cap) {
         sum += weights[j];
         j++;
       }

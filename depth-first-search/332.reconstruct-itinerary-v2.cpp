@@ -1,28 +1,30 @@
-  
+#include <algorithm>
+#include <queue>
+#include <string>
+#include <unordered_map>
+#include <vector>
+
 class Solution {
-    unordered_map<string,queue<string>>Map;
-    
+  std::unordered_map<std::string, std::queue<std::string>> Map;
+
 public:
-    vector<string> findItinerary(vector<vector<string>> tickets) 
-    {
-        sort(tickets.begin(),tickets.end());
-        for (auto ticket: tickets)
-            Map[ticket[0]].push(ticket[1]);
-        
-        vector<string> path;
-        DFS("JFK",path);
-        reverse(path.begin(),path.end());
-        return path;
+  std::vector<std::string> findItinerary(std::vector<std::vector<std::string>> tickets) {
+    std::sort(tickets.begin(), tickets.end());
+    for (auto ticket: tickets)
+      Map[ticket[0]].push(ticket[1]);
+
+    std::vector<std::string> path;
+    DFS("JFK", path);
+    std::reverse(path.begin(), path.end());
+    return path;
+  }
+
+  void DFS(std::string start, std::vector<std::string> &path) {
+    while (Map[start].size() > 0) {
+      std::string nextStart = Map[start].front();
+      Map[start].pop();
+      DFS(nextStart, path);
     }
-    
-    void DFS(string start, vector<string>& path)
-    {
-        while (Map[start].size()>0)
-        {
-            string nextStart = Map[start].front();
-            Map[start].pop();
-            DFS(nextStart, path);
-        }
-        path.push_back(start);
-    }
+    path.push_back(start);
+  }
 };
