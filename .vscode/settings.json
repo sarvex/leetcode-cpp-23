@@ -1,15 +1,14 @@
 {
   "workbench.colorCustomizations": {
-    "sash.hoverBorder": "#59df4c",
-    "statusBar.background": "#35d226",
-    "statusBar.border": "#35d226",
+    "sash.hoverBorder": "#5bb3da",
+    "statusBar.background": "#31a0d1",
     "statusBar.foreground": "#15202b",
-    "statusBarItem.hoverBackground": "#2aa71e",
-    "statusBarItem.remoteBackground": "#35d226",
+    "statusBarItem.hoverBackground": "#2681a9",
+    "statusBarItem.remoteBackground": "#31a0d1",
     "statusBarItem.remoteForeground": "#15202b",
-    "tab.activeBorder": "#59df4c"
+    "tab.activeBorder": "#5bb3da"
   },
-  "peacock.color": "#35d226",
+  "peacock.color": "#31a0d1",
   "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
   "files.associations": {
     "string": "cpp",
@@ -73,6 +72,30 @@
     "xstring": "cpp",
     "xtr1common": "cpp",
     "xutility": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "any": "cpp",
+    "charconv": "cpp",
+    "chrono": "cpp",
+    "format": "cpp",
+    "forward_list": "cpp",
+    "fstream": "cpp",
+    "iomanip": "cpp",
+    "ios": "cpp",
+    "locale": "cpp",
+    "mutex": "cpp",
+    "ratio": "cpp",
+    "sstream": "cpp",
+    "stop_token": "cpp",
+    "thread": "cpp",
+    "xfacet": "cpp",
+    "xiosbase": "cpp",
+    "xlocale": "cpp",
+    "xlocbuf": "cpp",
+    "xlocinfo": "cpp",
+    "xlocmes": "cpp",
+    "xlocmon": "cpp",
+    "xlocnum": "cpp",
+    "xloctime": "cpp",
+    "xtree": "cpp"
   }
 }
