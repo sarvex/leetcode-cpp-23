@@ -38,7 +38,7 @@ public:
         else if (len == i + 1)
           dp = 1;
         else {
-          int maxLen2 = min(len, j);
+          int maxLen2 = std::min(len, j);
 
           if (len == maxLen2 && lcs[j - maxLen2][j] < len && num[j - maxLen2 + lcs[j - maxLen2][j]] > num[j + lcs[j - maxLen2][j]])
             maxLen2--;

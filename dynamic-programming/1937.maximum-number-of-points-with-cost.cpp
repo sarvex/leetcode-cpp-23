@@ -27,7 +27,7 @@ public:
 
     long long ret = std::numeric_limits<int>::min();
     for (int j = 0; j < n; j++)
-      ret = max(ret, dp[m - 1][j]);
+      ret = std::max(ret, dp[m - 1][j]);
 
     return ret;
   }

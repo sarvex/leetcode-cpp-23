@@ -20,7 +20,7 @@ public:
         match[i][j] = n - count;
       }
 
-    std::priority_queue<pair<std::int, int>, std::vector<pair<std::int, int>>, std::greater<>> pq;
+    std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, std::greater<>> pq;
     pq.push({0, 0});
 
     std::vector<int> dp(1 << m, -1);
