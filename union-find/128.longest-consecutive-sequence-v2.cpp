@@ -1,16 +1,11 @@
-#include <vector>
-using std::vector;
-
-#include <unordered_set>
-using std::unordered_set;
-
 #include <algorithm>
-using std::max;
+#include <unordered_set>
+#include <vector>
 
 class Solution {
 public:
-  int longestConsecutive(vector<int> &nums) {
-    unordered_set<int> Set;
+  int longestConsecutive(std::vector<int> &nums) {
+    std::unordered_set<int> Set;
     for (auto a: nums)
       Set.insert(a);
 
@@ -22,7 +17,7 @@ public:
       while (Set.find(j) != Set.end())
         j++;
 
-      result = max(result, j - nums[i]);
+      result = std::max(result, j - nums[i]);
     }
     return result;
   }

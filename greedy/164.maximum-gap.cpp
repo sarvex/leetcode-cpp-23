@@ -1,23 +1,23 @@
 class Solution {
 public:
-    int maximumGap(vector<int>& nums) 
+    int maximumGap(vector<int>& nums)
     {
         int N=nums.size();
         if (N<2) return 0;
-        
-        int MIN=INT_MAX;
-        int MAX=INT_MIN;
+
+        int MIN=std::numeric_limits<int>::max();
+        int MAX=std::numeric_limits<int>::min();
         for (int i=0; i<nums.size(); i++)
         {
             MIN=min(MIN,nums[i]);
             MAX=max(MAX,nums[i]);
         }
-        
+
         int bucket_size = max(1,(MAX-MIN)/(N-1));
         int bucket_nums = (MAX-MIN)/bucket_size+1;
-        vector<int>bucket_min(bucket_nums,INT_MAX);
-        vector<int>bucket_max(bucket_nums,INT_MIN);
-        
+        vector<int>bucket_min(bucket_nums,std::numeric_limits<int>::max());
+        vector<int>bucket_max(bucket_nums,std::numeric_limits<int>::min());
+
         unordered_set<int>Set;
         for (int i=0; i<N; i++)
         {
@@ -27,8 +27,8 @@ public:
             Set.insert(idx);
             //cout<<idx<<" "<<bucket_min[idx]<<" "<<bucket_max[idx]<<endl;
         }
-        
-        int result=INT_MIN;
+
+        int result=std::numeric_limits<int>::min();
         int pre=0;
         for (int i=0; i<bucket_nums; i++)
         {
@@ -36,7 +36,7 @@ public:
             result=max(result,bucket_min[i]-bucket_max[pre]);
             pre = i;
         }
-        
-        return result;        
+
+        return result;
     }
 };

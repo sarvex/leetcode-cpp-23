@@ -9,7 +9,7 @@ public:
     std::vector<int> dp(n, 0);
     std::deque<int> q;
 
-    int ret = INT_MIN;
+    int ret = std::numeric_limits<int>::min();
     for (int i = 0; i < n; i++) {
       while (q.size() > 0 && q.front() < i - k)
         q.pop_front();

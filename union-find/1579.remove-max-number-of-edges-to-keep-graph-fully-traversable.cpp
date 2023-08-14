@@ -1,5 +1,4 @@
 #include <vector>
-using std::vector;
 
 class Solution {
   int N;
@@ -21,12 +20,12 @@ public:
       Father[x] = y;
   }
 
-  int maxNumEdgesToRemove(int n, vector<vector<int>> &edges) {
+  int maxNumEdgesToRemove(int n, std::vector<std::vector<int>> &edges) {
     N = n;
 
-    vector<vector<int>> edge0;
-    vector<vector<int>> edge1;
-    vector<vector<int>> edge2;
+    std::vector<std::vector<int>> edge0;
+    std::vector<std::vector<int>> edge1;
+    std::vector<std::vector<int>> edge2;
     for (auto edge: edges) {
       if (edge[0] == 3)
         edge0.push_back({edge[1], edge[2]});

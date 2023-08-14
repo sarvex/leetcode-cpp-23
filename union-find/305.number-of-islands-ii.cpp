@@ -1,22 +1,17 @@
 #include <vector>
-using std::pair;
-
-#include <vector>
-using std::vector;
-
 
 class Solution {
-  vector<int> Father;
+  std::vector<int> Father;
 
 public:
-  vector<int> numIslands2(int m, int n, vector<vector<int>> &positions) {
+  std::vector<int> numIslands2(int m, int n, std::vector<std::vector<int>> &positions) {
     Father.resize(m * n);
     for (int i = 0; i < m * n; i++)
       Father[i] = -1;
 
-    vector<pair<int, int>> dir = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    std::vector<std::pair<int, int>> dir = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
     int count = 0;
-    vector<int> result;
+    std::vector<int> result;
 
     for (int i = 0; i < positions.size(); i++) {
       int x = positions[i][0];

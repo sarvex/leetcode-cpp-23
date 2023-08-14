@@ -1,5 +1,4 @@
 #include <string>
-using std::string;
 
 class Solution {
   int Father[26];
@@ -19,7 +18,7 @@ class Solution {
   }
 
 public:
-  string smallestEquivalentString(string A, string B, string S) {
+  std::string smallestEquivalentString(std::string A, std::string B, std::string S) {
     for (int i = 0; i < 26; i++)
       Father[i] = i;
 
@@ -29,7 +28,7 @@ public:
     }
 
 
-    string ret;
+    std::string ret;
     for (auto ch: S)
       ret.push_back('a' + FindFather(ch - 'a'));
 

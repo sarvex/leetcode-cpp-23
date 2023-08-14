@@ -1,13 +1,10 @@
 #include <algorithm>
-using std::sort;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int triangleNumber(vector<int> &nums) {
-    sort(nums.begin(), nums.end());
+  int triangleNumber(std::vector<int> &nums) {
+    std::sort(nums.begin(), nums.end());
     int count = 0;
 
     for (int k = nums.size() - 1; k >= 0; k--) {

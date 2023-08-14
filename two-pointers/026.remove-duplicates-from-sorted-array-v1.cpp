@@ -1,12 +1,9 @@
 #include <algorithm>
-using std::swap;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int removeDuplicates(vector<int> &nums) {
+  int removeDuplicates(std::vector<int> &nums) {
     int i = 0;
     int j = 1;
 
@@ -15,7 +12,7 @@ public:
         j++;
       } else {
         i++;
-        swap(nums[i], nums[j]);
+        std::swap(nums[i], nums[j]);
         j++;
       }
     }

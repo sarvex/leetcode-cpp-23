@@ -1,15 +1,12 @@
 #include <unordered_map>
-using std::unordered_map;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  unordered_map<int, int> Father;
+  std::unordered_map<int, int> Father;
 
 public:
-  vector<int> findRedundantDirectedConnection(vector<vector<int>> &edges) {
-    vector<int> candA, candB;
+  std::vector<int> findRedundantDirectedConnection(std::vector<std::vector<int>> &edges) {
+    std::vector<int> candA, candB;
 
     for (int i = 0; i < edges.size(); i++) {
       int u = edges[i][0];

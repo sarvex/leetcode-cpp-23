@@ -1,8 +1,5 @@
 #include <algorithm>
-using std::min;
-
 #include <vector>
-using std::vector;
 
 class Solution {
   int Father[100005];
@@ -21,7 +18,7 @@ class Solution {
   }
 
 public:
-  int minScore(int n, vector<vector<int>> &roads) {
+  int minScore(int n, std::vector<std::vector<int>> &roads) {
     for (int i = 1; i <= n; i++)
       Father[i] = i;
 
@@ -31,11 +28,11 @@ public:
         Union(a, b);
     }
 
-    int ret = INT_MAX;
+    int ret = std::numeric_limits<int>::max();
     for (auto road: roads) {
       int a = road[0], b = road[1], d = road[2];
       if (FindFather(a) == FindFather(1))
-        ret = min(ret, d);
+        ret = std::min(ret, d);
     }
 
     return ret;

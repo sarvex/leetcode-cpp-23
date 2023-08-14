@@ -1,27 +1,18 @@
 #include <algorithm>
-using std::max;
-using std::sort;
-
 #include <unordered_set>
-using std::unordered_set;
-
 #include <utility>
-using std::make_pair;
-using std::pair;
-
 #include <vector>
-using std::vector;
 
 class DistanceLimitedPathsExist {
-  vector<pair<int, int>> snaps[10000];
+  std::vector<std::pair<int, int>> snaps[10000];
   int father[10000];
   int rank[10000];
-  vector<int> dist;
-  unordered_set<int> changed;
+  std::vector<int> dist;
+  std::unordered_set<int> changed;
   int snapId = 0;
 
 public:
-  DistanceLimitedPathsExist(int n, vector<vector<int>> &edgeList) {
+  DistanceLimitedPathsExist(int n, std::vector<std::vector<int>> &edgeList) {
     for (int i = 0; i < n; i++) {
       snaps[i].push_back({-1, i});
       father[i] = i;
@@ -57,18 +48,18 @@ public:
     if (findFather(a) != findFather(b)) {
       if (rank[a] < rank[b]) {
         father[a] = b;
-        rank[b] = max(rank[b], rank[a] + 1);
+        rank[b] = std::max(rank[b], rank[a] + 1);
         changed.insert(a);
       } else {
         father[b] = a;
-        rank[a] = max(rank[a], rank[b] + 1);
+        rank[a] = std::max(rank[a], rank[b] + 1);
         changed.insert(b);
       }
     }
   }
 
   int findSnapFather(int node, int snap_id) {
-    auto iter = upper_bound(snaps[node].begin(), snaps[node].end(), make_pair(snap_id, INT_MAX));
+    auto iter = upper_bound(snaps[node].begin(), snaps[node].end(), std::make_pair(snap_id, std::numeric_limits<int>::max()));
     iter = prev(iter, 1);
     int f = iter->second;
     if (f == node)

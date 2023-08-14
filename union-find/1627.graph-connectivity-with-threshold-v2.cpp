@@ -1,8 +1,7 @@
 #include <vector>
-using std::vector;
 
 class Solution {
-  vector<int> Father;
+  std::vector<int> Father;
 
 public:
   int FindFather(int x) {
@@ -20,12 +19,12 @@ public:
       Father[x] = y;
   }
 
-  vector<bool> areConnected(int n, int threshold, vector<vector<int>> &queries) {
+  std::vector<bool> areConnected(int n, int threshold, std::vector<std::vector<int>> &queries) {
     Father.resize(n + 1);
     for (int i = 1; i <= n; i++)
       Father[i] = i;
 
-    vector<int> visited(n + 1, 0);
+    std::vector<int> visited(n + 1, 0);
     for (int k = threshold + 1; k <= n; k++) {
       if (visited[k] == 1) continue;
       for (int x = 2 * k; x <= n; x += k) {
@@ -35,7 +34,7 @@ public:
       }
     }
 
-    vector<bool> rets;
+    std::vector<bool> rets;
     for (auto query: queries)
       rets.push_back(FindFather(query[0]) == FindFather(query[1]));
     return rets;

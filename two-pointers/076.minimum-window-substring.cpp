@@ -1,23 +1,20 @@
 #include <string>
-using std::string;
-
 #include <unordered_map>
-using std::unordered_map;
 
 class Solution {
 public:
-  string minWindow(string s, string t) {
-    unordered_map<char, int> Table;
+  std::string minWindow(std::string s, std::string t) {
+    std::unordered_map<char, int> Table;
     for (int i = 0; i < t.size(); i++)
       Table[t[i]]++;
     int M = Table.size();
     int ret_start = 0;
     int ret_len = 0;
 
-    unordered_map<char, int> Map;
+    std::unordered_map<char, int> Map;
     int i = 0;
-    int Len = INT_MAX;
-    string result;
+    int Len = std::numeric_limits<int>::max();
+    std::string result;
     int count = 0;
     for (int j = 0; j < s.size(); j++) {
       Map[s[j]]++;

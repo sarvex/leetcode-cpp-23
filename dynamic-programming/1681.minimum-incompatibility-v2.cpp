@@ -1,7 +1,7 @@
 class Solution {
     int n;
 public:
-    int minimumIncompatibility(vector<int>& nums, int k) 
+    int minimumIncompatibility(vector<int>& nums, int k)
     {
         unordered_map<int,int>count;
         for (auto x: nums)
@@ -10,19 +10,19 @@ public:
             if (x.second > k)
                 return -1;
 
-        n= nums.size();        
+        n= nums.size();
         vector<int>states;
         vector<int>values;
-        int state = (1 << n/k) - 1;            
+        int state = (1 << n/k) - 1;
         while (state < (1 << n))
         {
             int val;
             if (!containDuplicate(nums, state, val))
             {
                 states.push_back(state);
-                values.push_back(val);                
+                values.push_back(val);
             }
-            
+
             int c = state & - state;
             int r = state + c;
             state = (((r ^ state) >> 2) / c) | r;
@@ -31,18 +31,18 @@ public:
         vector<int>dpstates;
         for (int state=0; state<(1<<n); state++)
         {
-            if (__builtin_popcount(state) % (n/k) ==0) 
+            if (__builtin_popcount(state) % (n/k) ==0)
                 dpstates.push_back(state);
         }
         reverse(dpstates.begin(), dpstates.end());
-        
-        vector<int>dp(1<<n, INT_MAX/2);
+
+        vector<int>dp(1<<n, std::numeric_limits<int>::max()/2);
         dp[0] = 0;
 
         for (int i=0; i<states.size(); i++)
-        {            
+        {
             for (auto dpstate: dpstates)
-            {                
+            {
                 if ((dpstate & states[i])!=states[i]) continue;
                 dp[dpstate] = min(dp[dpstate], dp[dpstate-states[i]]+values[i]);
             }

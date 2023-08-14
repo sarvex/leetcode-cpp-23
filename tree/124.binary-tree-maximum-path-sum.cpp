@@ -10,26 +10,26 @@
  * };
  */
 class Solution {
-    int ret = INT_MIN;
+    int ret = std::numeric_limits<int>::min();
 public:
-    int maxPathSum(TreeNode* root) 
+    int maxPathSum(TreeNode* root)
     {
         MaxDownPath(root);
         return ret;
     }
-    
+
     int MaxDownPath(TreeNode* node)  // starting from node downward only, the max-sum path
     {
         if (node==NULL) return 0;
-        
+
         int leftSum = MaxDownPath(node->left);
         int rightSum = MaxDownPath(node->right);
-        
+
         int maxTurnSum = node->val;
         if (leftSum >= 0) maxTurnSum += leftSum;
         if (rightSum >= 0) maxTurnSum += rightSum;
         ret = max(ret, maxTurnSum);
-        
+
         if (leftSum < 0 && rightSum < 0)
             return node->val;
         else

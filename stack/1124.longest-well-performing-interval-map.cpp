@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int longestWPI(vector<int>& hours) 
+    int longestWPI(vector<int>& hours)
     {
         vector<int>q({0});
         int count = 0;
@@ -12,13 +12,13 @@ public:
                 count--;
             q.push_back(count);
         }
-        
+
         map<int,int>Map;
         Map[0] = 0;
         int result = 0;
         for (int i=1; i<q.size(); i++)
         {
-            int k = INT_MAX;
+            int k = std::numeric_limits<int>::max();
             for (auto x:Map)
             {
                 if (x.first >= q[i])
@@ -29,7 +29,7 @@ public:
             if (Map.begin()->first > q[i])
             {
                 Map[q[i]] = i;
-            }                
+            }
         }
         return result;
     }

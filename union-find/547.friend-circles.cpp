@@ -1,14 +1,11 @@
-#include <vector>
-using std::vector;
-
 #include <unordered_set>
-using std::unordered_set;
+#include <vector>
 
 class Solution {
-  vector<int> Father;
+  std::vector<int> Father;
 
 public:
-  int findCircleNum(vector<vector<int>> &M) {
+  int findCircleNum(std::vector<std::vector<int>> &M) {
     int N = M.size();
 
     for (int i = 0; i < N; i++)
@@ -22,7 +19,7 @@ public:
           Union(i, j);
       }
 
-    unordered_set<int> Set;
+    std::unordered_set<int> Set;
     for (int i = 0; i < N; i++) {
       Father[i] = FindSet(i);
       Set.insert(Father[i]);

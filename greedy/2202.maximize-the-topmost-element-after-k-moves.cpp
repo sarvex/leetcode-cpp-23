@@ -1,9 +1,9 @@
 class Solution {
 public:
-    int maximumTop(vector<int>& nums, int K) 
+    int maximumTop(vector<int>& nums, int K)
     {
-        int n = nums.size();        
-        int ret = INT_MIN;
+        int n = nums.size();
+        int ret = std::numeric_limits<int>::min();
         for (int i=1; i<=n; i++)
         {
             int k = K;
@@ -24,6 +24,6 @@ public:
 
             if (flag) ret = max(ret, nums[i-1]);
         }
-        return ret==INT_MIN? -1:ret;
+        return ret==std::numeric_limits<int>::min()? -1:ret;
     }
 };

@@ -1,9 +1,8 @@
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int numSubarrayProductLessThanK(vector<int> &nums, int k) {
+  int numSubarrayProductLessThanK(std::vector<int> &nums, int k) {
     if (k <= 1) return 0;
     int j = 0;
     int prod = 1;

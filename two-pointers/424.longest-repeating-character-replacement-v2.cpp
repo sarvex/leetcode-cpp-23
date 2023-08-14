@@ -1,16 +1,11 @@
 #include <algorithm>
-using std::max;
-
 #include <string>
-using std::string;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int characterReplacement(string s, int k) {
-    vector<int> count(26, 0);
+  int characterReplacement(std::string s, int k) {
+    std::vector<int> count(26, 0);
 
     int i = 0;
     int result = 0;
@@ -22,7 +17,7 @@ public:
         count[s[i] - 'A']--;
         i++;
       }
-      result = max(result, j - i + 1);
+      result = std::max(result, j - i + 1);
     }
     return result;
   }

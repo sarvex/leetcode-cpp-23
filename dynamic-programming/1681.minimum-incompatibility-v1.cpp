@@ -2,9 +2,9 @@ class Solution {
     int n;
     int k;
     vector<int>visited;
-    int ret = INT_MAX;
+    int ret = std::numeric_limits<int>::max();
 public:
-    int minimumIncompatibility(vector<int>& nums, int k) 
+    int minimumIncompatibility(vector<int>& nums, int k)
     {
         unordered_map<int,int>count;
         for (auto x: nums)
@@ -15,15 +15,15 @@ public:
 
         sort(nums.begin(), nums.end());
         this->k = k;
-        this->n = nums.size();               
+        this->n = nums.size();
         visited.resize(n);
-        
+
         visited[0] = 1;
         dfs(nums, 0, 1, nums[0], nums[0], 0);
-        
+
         return ret;
     }
-    
+
     void dfs(vector<int>& nums, int cur, int count, int low, int high, int sum)
     {
         if (count==n/k)
@@ -54,7 +54,7 @@ public:
                 dfs(nums, i, count+1, low, nums[i], sum);
                 last = nums[i];
                 visited[i] = 0;
-            }            
+            }
         }
     }
 };

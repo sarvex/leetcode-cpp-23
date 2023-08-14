@@ -1,20 +1,15 @@
 #include <algorithm>
-using std::max;
-using std::min;
-using std::sort;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  vector<int> minAvailableDuration(vector<vector<int>> &slots1, vector<vector<int>> &slots2, int duration) {
-    sort(slots1.begin(), slots1.end());
-    sort(slots2.begin(), slots2.end());
+  std::vector<int> minAvailableDuration(std::vector<std::vector<int>> &slots1, std::vector<std::vector<int>> &slots2, int duration) {
+    std::sort(slots1.begin(), slots1.end());
+    std::sort(slots2.begin(), slots2.end());
     int i = 0, j = 0;
     while (i < slots1.size() && j < slots2.size()) {
-      int start = max(slots1[i][0], slots2[j][0]);
-      int end = min(slots1[i][1], slots2[j][1]);
+      int start = std::max(slots1[i][0], slots2[j][0]);
+      int end = std::min(slots1[i][1], slots2[j][1]);
       if (end - start >= duration)
         return {start, start + duration};
 

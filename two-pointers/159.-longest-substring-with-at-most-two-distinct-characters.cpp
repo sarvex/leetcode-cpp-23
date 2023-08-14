@@ -1,16 +1,11 @@
 #include <algorithm>
-using std::max;
-
 #include <string>
-using std::string;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int lengthOfLongestSubstringTwoDistinct(string s) {
-    vector<int> Map(256, 0);
+  int lengthOfLongestSubstringTwoDistinct(std::string s) {
+    std::vector<int> Map(256, 0);
     int count = 0;
     int result = 0;
     int i = 0;
@@ -33,7 +28,7 @@ public:
         count++;
       }
 
-      result = max(result, j - i + 1);
+      result = std::max(result, j - i + 1);
     }
 
     return result;

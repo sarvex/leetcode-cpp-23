@@ -15,8 +15,8 @@ public:
       next[b].push_back({a, w});
     }
 
-    std::vector<std::vector<int>> cost(n, std::vector<int>(discounts + 1, INT_MAX));       // cost[city][discounts]
-    std::priority_queue<std::array<int, 3>, std::vector<std::array<int, 3>>, std::greater<>> pq;// {cost, city, discounts}
+    std::vector<std::vector<int>> cost(n, std::vector<int>(discounts + 1, std::numeric_limits<int>::max()));// cost[city][discounts]
+    std::priority_queue<std::array<int, 3>, std::vector<std::array<int, 3>>, std::greater<>> pq;            // {cost, city, discounts}
     pq.push({0, 0, discounts});
 
     while (!pq.empty()) {
@@ -29,9 +29,9 @@ public:
 
       for (auto x: next[cur]) {
         auto [nxt, toll] = x;
-        if (cost[nxt][times] == INT_MAX)
+        if (cost[nxt][times] == std::numeric_limits<int>::max())
           pq.push({c + toll, nxt, times});
-        if (times >= 1 && cost[nxt][times - 1] == INT_MAX)
+        if (times >= 1 && cost[nxt][times - 1] == std::numeric_limits<int>::max())
           pq.push({c + toll / 2, nxt, times - 1});
       }
     }

@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int minOperations(vector<int>& nums, int x) 
+    int minOperations(vector<int>& nums, int x)
     {
         int n = nums.size();
         unordered_map<int,int>Map;
@@ -12,11 +12,11 @@ public:
             if (Map.find(presum)==Map.end())
                 Map[presum] = i;
         }
-        
-        int ret = INT_MAX;
+
+        int ret = std::numeric_limits<int>::max();
         if (Map.find(x)!=Map.end())
             ret = Map[x]+1;
-        
+
         int sufsum = 0;
         for (int b = n-1; b>=0; b--)
         {
@@ -31,8 +31,7 @@ public:
                 }
             }
         }
-        
-        return ret==INT_MAX ? -1: ret;        
+
+        return ret==std::numeric_limits<int>::max() ? -1: ret;
     }
 };
-

@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int minimumDeviation(vector<int>& nums) 
+    int minimumDeviation(vector<int>& nums)
     {
         multiset<int>Set;
         for (auto x: nums)
@@ -11,7 +11,7 @@ public:
                 Set.insert(x*2);
         }
 
-        int ret = INT_MAX;
+        int ret = std::numeric_limits<int>::max();
         while (!Set.empty())
         {
             ret = min(ret, *Set.rbegin() - *Set.begin());

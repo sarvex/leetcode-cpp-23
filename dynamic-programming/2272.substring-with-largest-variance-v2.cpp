@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int largestVariance(string s) 
+    int largestVariance(string s)
     {
         int n = s.size();
         unordered_map<char, vector<int>>Map;
@@ -12,8 +12,8 @@ public:
         for (auto& [a, pos0]: Map)
             for (auto& [b, pos1]: Map)
             {
-                if (a==b) continue;                
-                int curSum0 = 0,  curSum1 = INT_MIN/2;
+                if (a==b) continue;
+                int curSum0 = 0,  curSum1 = std::numeric_limits<int>::min()/2;
 
                 int i = 0, j = 0;
 
@@ -28,7 +28,7 @@ public:
                     else if (i==pos0.size() || (j<pos1.size() && pos1[j] < pos0[i]))
                     {
                         curSum1 = max(curSum0-1, curSum1-1);
-                        curSum0 = 0;                        
+                        curSum0 = 0;
                         j++;
                     }
 

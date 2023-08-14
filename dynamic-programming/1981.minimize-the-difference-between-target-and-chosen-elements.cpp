@@ -1,11 +1,11 @@
 class Solution {
 public:
-    int minimizeTheDifference(vector<vector<int>>& mat, int target) 
+    int minimizeTheDifference(vector<vector<int>>& mat, int target)
     {
         int m = mat.size();
         int n = mat[0].size();
         unordered_set<int>Set({0});
-        
+
         for (int i=0; i<m; i++)
         {
             unordered_set<int>temp;
@@ -21,22 +21,22 @@ public:
                         if (great==-1)
                             great = x+y;
                         else if (x+y < great)
-                            great = x+y;                            
+                            great = x+y;
                     }
-                }                    
+                }
             }
             if (great!=-1)
                 temp.insert(great);
-            
-            Set = std::move(temp);                       
+
+            Set = std::move(temp);
         }
-        
-        int diff = INT_MAX;
+
+        int diff = std::numeric_limits<int>::max();
         for (auto x:Set)
         {
             diff = min(diff, abs(x-target));
         }
         return diff;
-        
+
     }
 };

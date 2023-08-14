@@ -11,7 +11,7 @@ public:
   int minOperations(std::vector<int> &nums, int x, int y)
   {
     sort(nums.rbegin(), nums.rend());
-    int left = 0, right = INT_MAX / 2;
+    int left = 0, right = std::numeric_limits<int>::max() / 2;
     while (left < right)
     {
       int mid = left + (right - left) / 2;

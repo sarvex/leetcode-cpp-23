@@ -1,7 +1,7 @@
 class Solution {
     int dp[500001][4];
 public:
-    int minSideJumps(vector<int>& obstacles) 
+    int minSideJumps(vector<int>& obstacles)
     {
         int n = obstacles.size()-1;
         dp[0][1] = 1;
@@ -9,14 +9,14 @@ public:
         dp[0][3] = 1;
         for (int i=1; i<=n; i++)
         {
-            int obs = obstacles[i];            
-            int minVal = INT_MAX;
+            int obs = obstacles[i];
+            int minVal = std::numeric_limits<int>::max();
             for (int j=1; j<=3; j++)
             {
                 if (j==obs)
-                    dp[i][j] = INT_MAX;
+                    dp[i][j] = std::numeric_limits<int>::max();
                 else
-                    dp[i][j] = dp[i-1][j];                
+                    dp[i][j] = dp[i-1][j];
                 minVal = min(minVal, dp[i][j]);
             }
 
@@ -27,7 +27,7 @@ public:
             }
         }
 
-        int ret = INT_MAX;
+        int ret = std::numeric_limits<int>::max();
         for (int j=1; j<=3; j++)
             ret = min(ret, dp[n][j]);
         return ret;

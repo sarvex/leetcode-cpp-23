@@ -38,7 +38,7 @@ public:
     if (Map.find(key) != Map.end())
       return Map[key];
 
-    int result = INT_MAX;
+    int result = std::numeric_limits<int>::max();
     int special_used = 0;
     for (int i = 0; i < specials.size(); i++) {
       int flag = 1;

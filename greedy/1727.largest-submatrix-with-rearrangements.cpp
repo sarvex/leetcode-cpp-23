@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int largestSubmatrix(vector<vector<int>>& matrix) 
+    int largestSubmatrix(vector<vector<int>>& matrix)
     {
         int m = matrix.size();
         int n = matrix[0].size();
@@ -13,18 +13,18 @@ public:
                 if (matrix[i][j]==1)
                     a[j] = a[j]+1;
                 else
-                    a[j] = 0;                    
+                    a[j] = 0;
             }
             auto b = a;
             sort(b.begin(), b.end());
             reverse(b.begin(), b.end());
-            int h = INT_MAX;
+            int h = std::numeric_limits<int>::max();
             for (int j=0; j<n; j++)
             {
                 h = min(h, b[j]);
                 ret = max(ret, h*(j+1));
             }
         }
-        return ret;        
+        return ret;
     }
 };

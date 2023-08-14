@@ -1,15 +1,10 @@
 #include <queue>
-using std::queue;
-
 #include <utility>
-using std::pair;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int minimumEffortPath(vector<vector<int>> &heights) {
+  int minimumEffortPath(std::vector<std::vector<int>> &heights) {
     int left = 0, right = 1000000;
     while (left < right) {
       int mid = left + (right - left) / 2;
@@ -21,14 +16,14 @@ public:
     return left;
   }
 
-  bool isOK(vector<vector<int>> &heights, int a) {
+  bool isOK(std::vector<std::vector<int>> &heights, int a) {
     int m = heights.size();
     int n = heights[0].size();
-    auto visited = vector<vector<int>>(m, vector<int>(n, 0));
+    auto visited = std::vector<std::vector<int>>(m, std::vector<int>(n, 0));
     visited[0][0] = 1;
-    queue<pair<int, int>> q;
+    std::queue<std::pair<int, int>> q;
     q.push({0, 0});
-    auto dir = vector<pair<int, int>>({{1, 0}, {-1, 0}, {0, 1}, {0, -1}});
+    auto dir = std::vector<std::pair<int, int>>({{1, 0}, {-1, 0}, {0, 1}, {0, -1}});
     while (!q.empty()) {
       int x = q.front().first;
       int y = q.front().second;

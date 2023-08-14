@@ -1,20 +1,15 @@
 #include <algorithm>
-using std::swap;
-
 #include <unordered_map>
-using std::unordered_map;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int minSwapsCouples(vector<int> &row) {
+  int minSwapsCouples(std::vector<int> &row) {
     if (row.size() == 0) return 0;
 
     int N = row.size();
-    unordered_map<int, int> Pos;
-    unordered_map<int, int> coupleID;
+    std::unordered_map<int, int> Pos;
+    std::unordered_map<int, int> coupleID;
 
     for (int i = 0; i < N; i++) {
       Pos[row[i]] = i;
@@ -34,7 +29,7 @@ public:
       int curPos = k + 1;
 
       while (flag == 0) {
-        swap(row[Pos[partner]], row[curPos]);
+        std::swap(row[Pos[partner]], row[curPos]);
         count++;
 
         holder = row[Pos[partner]];

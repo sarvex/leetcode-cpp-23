@@ -1,18 +1,18 @@
 class Solution {
 public:
-    int numberOfArithmeticSlices(vector<int>& A) 
+    int numberOfArithmeticSlices(vector<int>& A)
     {
         unordered_map<int,vector<int>>Map;
         for (int i=0; i<A.size(); i++)
             Map[A[i]].push_back(i);
-        
+
         int N = A.size();
         auto dp = vector<vector<int>>(N,vector<int>(N,0));
         for (int i=0; i<N; i++)
             for (int j=0; j<i; j++)
             {
                 long m = A[j]*2L-A[i];
-                if (m>INT_MAX || m<INT_MIN) continue;
+                if (m>std::numeric_limits<int>::max() || m<std::numeric_limits<int>::min()) continue;
                 for (int k:Map[m])
                 {
                     if (k<j)

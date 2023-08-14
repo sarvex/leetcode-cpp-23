@@ -1,17 +1,12 @@
 #include <algorithm>
-using std::sort;
-
 #include <unordered_set>
-using std::unordered_set;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  static bool cmp(vector<int> &a, vector<int> &b) {
+  static bool cmp(std::vector<int> &a, std::vector<int> &b) {
     return a[2] < b[2];
   }
-  vector<int> Father;
+  std::vector<int> Father;
 
 public:
   int findFather(int x) {
@@ -28,12 +23,12 @@ public:
       Father[x] = y;
   }
 
-  int mst(int n, vector<vector<int>> &edges, int idx) {
+  int mst(int n, std::vector<std::vector<int>> &edges, int idx) {
     Father.resize(n);
     for (int i = 0; i < n; i++)
       Father[i] = i;
 
-    unordered_set<int> temp;
+    std::unordered_set<int> temp;
 
     int result = 0;
     for (int i = 0; i < edges.size(); i++) {
@@ -50,16 +45,16 @@ public:
 
     for (int i = 0; i < n; i++) {
       if (findFather(i) != Father[1])
-        return INT_MAX;
+        return std::numeric_limits<int>::max();
     }
 
     return result;
   }
 
 
-  vector<vector<int>> findCriticalAndPseudoCriticalEdges(int n, vector<vector<int>> &edges) {
-    unordered_set<int> Set1;
-    unordered_set<int> Set2;
+  std::vector<std::vector<int>> findCriticalAndPseudoCriticalEdges(int n, std::vector<std::vector<int>> &edges) {
+    std::unordered_set<int> Set1;
+    std::unordered_set<int> Set2;
 
     for (int i = 0; i < edges.size(); i++)
       edges[i].push_back(i);
@@ -84,9 +79,9 @@ public:
       edges.erase(edges.begin());
     }
 
-    vector<int> rets1(Set1.begin(), Set1.end());
+    std::vector<int> rets1(Set1.begin(), Set1.end());
 
-    vector<int> rets2;
+    std::vector<int> rets2;
     for (int x: Set2) {
       if (Set1.find(x) == Set1.end())
         rets2.push_back(x);

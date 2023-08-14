@@ -1,14 +1,14 @@
 class Solution {
 public:
-    int minOperations(vector<vector<int>>& grid, int x) 
+    int minOperations(vector<vector<int>>& grid, int x)
     {
         int m = grid.size();
         int n = grid[0].size();
-        int mn = INT_MAX;
+        int mn = std::numeric_limits<int>::max();
         for (int i=0; i<m; i++)
             for (int j=0; j<n; j++)
                 mn = min(mn, grid[i][j]);
-        
+
         vector<int>nums;
         for (int i=0; i<m; i++)
             for (int j=0; j<n; j++)
@@ -17,7 +17,7 @@ public:
                     return -1;
                 nums.push_back(grid[i][j]);
             }
-        
+
         sort(nums.begin(), nums.end());
         int k = nums.size();
         int ret = 0;

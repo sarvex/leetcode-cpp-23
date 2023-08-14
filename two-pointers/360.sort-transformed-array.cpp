@@ -1,19 +1,16 @@
 #include <algorithm>
-using std::reverse;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  vector<int> sortTransformedArray(vector<int> &nums, int a, int b, int c) {
-    vector<int> result;
+  std::vector<int> sortTransformedArray(std::vector<int> &nums, int a, int b, int c) {
+    std::vector<int> result;
 
     if (a == 0) {
       for (int i = 0; i < nums.size(); i++)
         result.push_back(b * nums[i] + c);
       if (b < 0)
-        reverse(result.begin(), result.end());
+        std::reverse(result.begin(), result.end());
     } else {
       int flag = (a > 0);
       float mid = -b / 2.0 / a;

@@ -1,15 +1,10 @@
 #include <queue>
-using std::queue;
-
 #include <utility>
-using std::pair;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  void solve(vector<vector<char>> &board) {
+  void solve(std::vector<std::vector<char>> &board) {
     int M = board.size();
     if (M == 0) return;
     int N = board[0].size();
@@ -33,9 +28,9 @@ public:
       }
   }
 
-  void BFS(int i, int j, vector<vector<char>> &board) {
-    vector<pair<int, int>> dir = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
-    queue<pair<int, int>> q;
+  void BFS(int i, int j, std::vector<std::vector<char>> &board) {
+    std::vector<std::pair<int, int>> dir = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    std::queue<std::pair<int, int>> q;
     q.push({i, j});
     board[i][j] = '#';
     int M = board.size();

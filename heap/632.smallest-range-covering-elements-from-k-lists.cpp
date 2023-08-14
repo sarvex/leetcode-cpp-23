@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<int> smallestRange(vector<vector<int>>& nums) 
+    vector<int> smallestRange(vector<vector<int>>& nums)
     {
         set<pair<int,int>>Set;
         int n = nums.size();
@@ -11,7 +11,7 @@ public:
             Set.insert({nums[i][0],i});
         }
 
-        int range = INT_MAX;
+        int range = std::numeric_limits<int>::max();
         vector<int>ret;
         while (1)
         {
@@ -19,7 +19,7 @@ public:
             {
                 range = Set.rbegin()->first - Set.begin()->first;
                 ret = {Set.begin()->first, Set.rbegin()->first};
-            }            
+            }
             int i = Set.begin()->second;
             pointers[i]++;
             if (pointers[i]==nums[i].size()) break;

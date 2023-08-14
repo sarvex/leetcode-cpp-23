@@ -1,13 +1,10 @@
 #include <algorithm>
-using std::sort;
-
 #include <vector>
-using std::vector;
 
 class Solution {
   int Father[100005];
 
-  static bool cmp(vector<int> &a, vector<int> &b) {
+  static bool cmp(std::vector<int> &a, std::vector<int> &b) {
     return a[2] < b[2];
   }
 
@@ -26,18 +23,18 @@ public:
       Father[x] = y;
   }
 
-  vector<bool> distanceLimitedPathsExist(int n, vector<vector<int>> &edgeList, vector<vector<int>> &queries) {
+  std::vector<bool> distanceLimitedPathsExist(int n, std::vector<std::vector<int>> &edgeList, std::vector<std::vector<int>> &queries) {
     for (int i = 0; i < n; i++)
       Father[i] = i;
 
     for (int i = 0; i < queries.size(); i++)
       queries[i].push_back(i);
 
-    sort(queries.begin(), queries.end(), cmp);
-    sort(edgeList.begin(), edgeList.end(), cmp);
+    std::sort(queries.begin(), queries.end(), cmp);
+    std::sort(edgeList.begin(), edgeList.end(), cmp);
 
     int i = 0;
-    vector<bool> ret(queries.size(), 0);
+    std::vector<bool> ret(queries.size(), 0);
     for (auto &q: queries) {
       while (i < edgeList.size() && edgeList[i][2] < q[2]) {
         int a = edgeList[i][0];

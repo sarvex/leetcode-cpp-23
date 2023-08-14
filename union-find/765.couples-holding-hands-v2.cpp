@@ -1,14 +1,11 @@
-#include <vector>
-using std::vector;
-
 #include <unordered_map>
-using std::unordered_map;
+#include <vector>
 
 class Solution {
-  vector<int> Father;
+  std::vector<int> Father;
 
 public:
-  int minSwapsCouples(vector<int> &row) {
+  int minSwapsCouples(std::vector<int> &row) {
     int N = row.size();
     Father.resize(N);
 
@@ -24,7 +21,7 @@ public:
         Union(a, b);
     }
 
-    unordered_map<int, int> count;
+    std::unordered_map<int, int> count;
     for (int i = 0; i < N; i++)
       count[FindFather(i)] += 1;
 

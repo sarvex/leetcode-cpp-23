@@ -1,15 +1,15 @@
 class Solution {
 public:
-    bool find132pattern(vector<int>& nums) 
+    bool find132pattern(vector<int>& nums)
     {
         int n = nums.size();
         vector<int>leftMin(n);
-        leftMin[0] = INT_MAX;
+        leftMin[0] = std::numeric_limits<int>::max();
         for (int i=1; i<n; i++)
         {
             leftMin[i] = min(leftMin[i-1], nums[i-1]);
         }
-        
+
         stack<int>Stack;
         for (int i=n-1; i>=0; i--)
         {
@@ -18,7 +18,7 @@ public:
                 if (leftMin[i] < nums[Stack.top()])
                     return true;
                 Stack.pop();
-            }            
+            }
             Stack.push(i);
         }
         return false;

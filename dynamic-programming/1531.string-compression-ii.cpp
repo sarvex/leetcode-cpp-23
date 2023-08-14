@@ -1,7 +1,7 @@
 class Solution {
     int dp[101][101][27][11];
 public:
-    int getLengthOfOptimalCompression(string s, int K) 
+    int getLengthOfOptimalCompression(string s, int K)
     {
         // Handling the special case of "a...a" where there are 100 as
         if (s.size()==100 && K==0)
@@ -11,13 +11,13 @@ public:
             {
                 if (s[i]!=s[0])
                 {
-                    flag = 0;                
+                    flag = 0;
                     break;
-                }                    
+                }
             }
             if (flag==1) return 4;
         }
-        
+
         int n = s.size();
         s = "#"+s;
 
@@ -25,7 +25,7 @@ public:
             for (int k=0; k<=K; k++)
                 for (int ch=0; ch<=26; ch++)
                     for (int num=0; num<=10; num++)
-                        dp[i][k][ch][num] = INT_MAX;
+                        dp[i][k][ch][num] = std::numeric_limits<int>::max();
         // dp[i][k][ch][num]: the optimal solution for s[1:i]
         // with k digits removed, last letter as ch, the consecitive number of ch as num
 
@@ -37,7 +37,7 @@ public:
                     for (int num = 0; num <=10; num++)
                     {
                         int cur = dp[i][k][ch][num];
-                        if (cur==INT_MAX) continue;
+                        if (cur==std::numeric_limits<int>::max()) continue;
 
                         // delete s[i+1]
                         dp[i+1][k+1][ch][num] = min(dp[i+1][k+1][ch][num], cur);
@@ -57,13 +57,12 @@ public:
                             dp[i+1][k][s[i+1]-'a'][1] = min(dp[i+1][k][s[i+1]-'a'][1], cur+1);
                         }
                     }
-        
-        int ret = INT_MAX;
+
+        int ret = std::numeric_limits<int>::max();
         for (int ch = 0; ch <= 26; ch++)
-            for (int num = 0; num <=10; num++)                    
+            for (int num = 0; num <=10; num++)
                 ret = min(ret, dp[n][K][ch][num]);
-        
+
         return ret;
     }
 };
-

@@ -1,9 +1,8 @@
 #include <string>
-using std::string;
 
 class Solution {
 public:
-  int numberOfSubstrings(string s) {
+  int numberOfSubstrings(std::string s) {
     int j = 0;
     int count1 = 0, count2 = 0, count3 = 0;
     int ret = 0;

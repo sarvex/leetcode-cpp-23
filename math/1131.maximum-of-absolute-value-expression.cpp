@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int maxAbsValExpr(vector<int>& arr1, vector<int>& arr2) 
+    int maxAbsValExpr(vector<int>& arr1, vector<int>& arr2)
     {
         int N = arr1.size();
         int  a[N][3];
@@ -10,25 +10,25 @@ public:
             a[i][1] = arr2[i];
             a[i][2] = i;
         }
-        
+
         int ans = 0, mi, mx, t;
-        for (int s=0; s<(1<<3); s++) 
+        for (int s=0; s<(1<<3); s++)
         {
-            mi = INT_MAX, mx = INT_MIN;
-            for (int i=0; i<N; i++) 
+            mi = std::numeric_limits<int>::max(), mx = std::numeric_limits<int>::min();
+            for (int i=0; i<N; i++)
             {
                 t = 0;
                 for (int j=0; j<3; j++)
-                    if ((1<<j) & s) 
+                    if ((1<<j) & s)
                         t += a[i][j];
-                    else 
+                    else
                         t -= a[i][j];
                 mi = min(mi, t);
                 mx = max(mx, t);
             }
             ans = max(ans, mx-mi);
         }
-        
+
         return ans;
 
     }

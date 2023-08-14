@@ -8,12 +8,12 @@ class Solution {
 
 public:
   int findMinStep(std::string board, std::string hand) {
-    result = INT_MAX;
+    result = std::numeric_limits<int>::max();
     std::unordered_map<char, int> Hand;
     for (auto x: hand) Hand[x]++;
 
     DFS(board, Hand, 0);
-    if (result == INT_MAX) return -1;
+    if (result == std::numeric_limits<int>::max()) return -1;
     else
       return result;
   }

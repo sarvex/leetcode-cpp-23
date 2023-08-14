@@ -1,19 +1,15 @@
 #include "gtest/gtest.h"
-#include <climits>   // INT_MAX
-#include <algorithm> // std::min({})
-#include <vector>
-#include <string>
-using namespace std;
-
-#include <unistd.h>
+#include <algorithm>// std::min({})
+#include <chrono>   // benchmark
+#include <climits>  // std::numeric_limits<int>::max()
 #include <ctime>
-
-#include <chrono> // benchmark
+#include <string>
+#include <unistd.h>
+#include <vector>
 
 #include <Dynamic_Programming/072.Edit-Distance/072.Edit-Distance.cpp>
 
-TEST(edit_distance_72_test, I)
-{
+TEST(edit_distance_72_test, I) {
   std::string word1 = "horse";
   std::string word2 = "ros";
 
@@ -21,8 +17,7 @@ TEST(edit_distance_72_test, I)
   ASSERT_EQ(Solution().minDistance(word1, word2), 3);
 }
 
-TEST(edit_distance_72_test, II)
-{
+TEST(edit_distance_72_test, II) {
   std::string word1 = "intention";
   std::string word2 = "execution";
 
@@ -30,8 +25,7 @@ TEST(edit_distance_72_test, II)
   ASSERT_EQ(Solution().minDistance(word1, word2), 5);
 }
 
-TEST(edit_distance_72_test, benchmark)
-{
+TEST(edit_distance_72_test, benchmark) {
   static std::string alnums =
     "0123456789"
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

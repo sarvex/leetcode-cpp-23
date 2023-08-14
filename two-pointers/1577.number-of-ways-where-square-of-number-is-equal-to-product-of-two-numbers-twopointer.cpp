@@ -1,21 +1,18 @@
 #include <algorithm>
-using std::sort;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int numTriplets(vector<int> &nums1, vector<int> &nums2) {
+  int numTriplets(std::vector<int> &nums1, std::vector<int> &nums2) {
     int ret = 0;
-    sort(nums1.begin(), nums1.end());
-    sort(nums2.begin(), nums2.end());
+    std::sort(nums1.begin(), nums1.end());
+    std::sort(nums2.begin(), nums2.end());
     ret += helper(nums1, nums2);
     ret += helper(nums2, nums1);
     return ret;
   }
 
-  int helper(vector<int> &nums1, vector<int> &nums2) {
+  int helper(std::vector<int> &nums1, std::vector<int> &nums2) {
     int ret = 0;
     int n = nums2.size();
     for (long x: nums1) {
@@ -33,7 +30,7 @@ public:
               i++;
             while (j - 1 < n && nums2[j - 1] == nums2[j])
               j--;
-            ret += abs(i - i0 + 1) * abs(j0 - j + 1);
+            ret += std::abs(i - i0 + 1) * std::abs(j0 - j + 1);
             i++;
             j--;
           }

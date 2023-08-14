@@ -1,11 +1,6 @@
 #include <algorithm>
-using std::max;
-
 #include <unordered_map>
-using std::unordered_map;
-
 #include <vector>
-using std::vector;
 
 class Solution {
   int L = 1e5;
@@ -25,8 +20,8 @@ class Solution {
   }
 
 public:
-  vector<int> Eratosthenes(int n) {
-    auto q = vector<int>(n + 1, 0);
+  std::vector<int> Eratosthenes(int n) {
+    auto q = std::vector<int>(n + 1, 0);
     for (int i = 2; i <= sqrt(n); i++) {
       if (q[i] == 0) {
         int j = i * 2;
@@ -36,7 +31,7 @@ public:
         }
       }
     }
-    vector<int> primes;
+    std::vector<int> primes;
     for (int i = 2; i <= n; i++) {
       if (q[i] == 0)
         primes.push_back(i);
@@ -44,11 +39,11 @@ public:
     return primes;
   }
 
-  int largestComponentSize(vector<int> &nums) {
+  int largestComponentSize(std::vector<int> &nums) {
     for (int i = 0; i <= L; i++)
       Father[i] = i;
 
-    vector<int> primes = Eratosthenes(sqrt(L));
+    std::vector<int> primes = Eratosthenes(sqrt(L));
 
     for (int i = 0; i < nums.size(); i++) {
       int x = nums[i];
@@ -65,13 +60,13 @@ public:
       }
     }
 
-    unordered_map<int, int> count;
+    std::unordered_map<int, int> count;
     for (int i = 0; i < nums.size(); i++) {
       count[FindFather(nums[i])] += 1;
     }
     int ret = 0;
     for (auto x: count)
-      ret = max(ret, x.second);
+      ret = std::max(ret, x.second);
     return ret;
   }
 };

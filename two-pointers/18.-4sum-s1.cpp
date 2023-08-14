@@ -1,16 +1,13 @@
 #include <algorithm>
-using std::sort;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  vector<vector<int>> fourSum(vector<int> &nums, int target) {
-    vector<vector<int>> results;
+  std::vector<std::vector<int>> fourSum(std::vector<int> &nums, int target) {
+    std::vector<std::vector<int>> results;
     if (nums.size() < 4) return results;
 
-    sort(nums.begin(), nums.end());
+    std::sort(nums.begin(), nums.end());
 
     for (int a = 0; a < nums.size(); a++) {
       if (nums[a] * 4 > target) break;
@@ -30,7 +27,7 @@ public:
 
         while (left < right) {
           if (nums[a] + nums[b] + nums[left] + nums[right] == target) {
-            vector<int> temp = {nums[a], nums[b], nums[left], nums[right]};
+            std::vector<int> temp = {nums[a], nums[b], nums[left], nums[right]};
             results.push_back(temp);
             left++;
             right--;

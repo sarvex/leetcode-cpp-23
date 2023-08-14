@@ -11,7 +11,7 @@ class Codec {
 public:
 
     // Encodes a tree to a single string.
-    string serialize(TreeNode* root) 
+    string serialize(TreeNode* root)
     {
         string s;
         DFS(root,s);
@@ -20,7 +20,7 @@ public:
     }
 
     // Decodes your encoded data to tree.
-    TreeNode* deserialize(string data) 
+    TreeNode* deserialize(string data)
     {
         if (data.size()==0) return NULL;
         vector<int>preorder;
@@ -36,37 +36,37 @@ public:
             preorder.push_back(stoi(s));
             i++;
         }
-        
+
         for (int i=0; i<preorder.size(); i++)
             cout<<preorder[i]<<" ";
         cout<<endl;
-        
-        TreeNode *root = DFS2(preorder,0,INT_MIN,INT_MAX);
-        
+
+        TreeNode *root = DFS2(preorder,0,std::numeric_limits<int>::min(),std::numeric_limits<int>::max());
+
         return root;
     }
-    
+
 private:
     void DFS(TreeNode* root, string& s)
     {
         if (root==NULL) return;
-        
+
         s+=to_string(root->val)+',';
         DFS(root->left,s);
         DFS(root->right,s);
     }
-    
+
     TreeNode* DFS2(vector<int>& preorder,int curIdx, int MIN, int MAX)
     {
         if (curIdx>=preorder.size()) return NULL;
-        
+
         if (preorder[curIdx]<MIN || preorder[curIdx]>MAX)
             return DFS2(preorder, curIdx+1, MIN, MAX);
-        
+
         TreeNode* root = new TreeNode(preorder[curIdx]);
         root->left = DFS2(preorder,curIdx+1,MIN,root->val);
-        root->right = DFS2(preorder,curIdx+1,root->val,MAX); 
-        
+        root->right = DFS2(preorder,curIdx+1,root->val,MAX);
+
         return root;
     }
 };

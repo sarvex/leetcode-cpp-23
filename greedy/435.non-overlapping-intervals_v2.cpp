@@ -1,9 +1,9 @@
 class Solution {
 public:
-    int eraseOverlapIntervals(vector<vector<int>>& intervals) 
+    int eraseOverlapIntervals(vector<vector<int>>& intervals)
     {
         sort(intervals.begin(), intervals.end());
-        int far = INT_MIN;
+        int far = std::numeric_limits<int>::min();
         int count = 0;
         for (auto interval: intervals)
         {

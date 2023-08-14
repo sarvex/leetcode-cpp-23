@@ -1,15 +1,9 @@
 #include <algorithm>
-using std::max;
-using std::sort;
-
 #include <utility>
-using std::pair;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  vector<int> Father;
+  std::vector<int> Father;
   int FindFather(int x) {
     if (Father[x] != x)
       Father[x] = FindFather(Father[x]);
@@ -26,7 +20,7 @@ class Solution {
   }
 
 public:
-  vector<vector<int>> matrixRankTransform(vector<vector<int>> &matrix) {
+  std::vector<std::vector<int>> matrixRankTransform(std::vector<std::vector<int>> &matrix) {
     int m = matrix.size();
     int n = matrix[0].size();
     Father.resize(m * n);
@@ -35,7 +29,7 @@ public:
         Father[i * n + j] = i * n + j;
 
     for (int i = 0; i < m; i++) {
-      vector<pair<int, int>> temp;
+      std::vector<std::pair<int, int>> temp;
       for (int j = 0; j < n; j++)
         temp.push_back({matrix[i][j], i * n + j});
       sort(temp.begin(), temp.end());
@@ -48,7 +42,7 @@ public:
     }
 
     for (int j = 0; j < n; j++) {
-      vector<pair<int, int>> temp;
+      std::vector<std::pair<int, int>> temp;
       for (int i = 0; i < m; i++)
         temp.push_back({matrix[i][j], i * n + j});
       sort(temp.begin(), temp.end());
@@ -60,8 +54,8 @@ public:
       }
     }
 
-    vector<pair<int, int>> nums;
-    vector<vector<int>> group(m * n);
+    std::vector<std::pair<int, int>> nums;
+    std::vector<std::vector<int>> group(m * n);
     for (int i = 0; i < m; i++)
       for (int j = 0; j < n; j++) {
         int root = FindFather(i * n + j);
@@ -70,9 +64,9 @@ public:
       }
     sort(nums.begin(), nums.end());
 
-    vector<int> rowRank(m, 0);
-    vector<int> colRank(m, 0);
-    auto rets = vector<vector<int>>(m, vector<int>(n));
+    std::vector<int> rowRank(m, 0);
+    std::vector<int> colRank(m, 0);
+    auto rets = std::vector<std::vector<int>>(m, std::vector<int>(n));
 
     for (auto p: nums) {
       int val = p.first;
@@ -82,8 +76,8 @@ public:
 
       int r = 0;
       for (auto p: group[Father[x * n + y]]) {
-        r = max(r, rowRank[p / n]);
-        r = max(r, colRank[p % n]);
+        r = std::max(r, rowRank[p / n]);
+        r = std::max(r, colRank[p % n]);
       }
       for (auto p: group[Father[x * n + y]]) {
         rowRank[p / n] = r + 1;

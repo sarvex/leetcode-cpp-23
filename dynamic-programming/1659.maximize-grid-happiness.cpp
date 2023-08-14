@@ -4,7 +4,7 @@ class Solution {
     int a[6];
     int b[6];
 public:
-    int getMaxGridHappiness(int m, int n, int introvertsCount, int extrovertsCount) 
+    int getMaxGridHappiness(int m, int n, int introvertsCount, int extrovertsCount)
     {
         this->N = n;
         int MAX_State = pow(3,n);
@@ -12,11 +12,11 @@ public:
             for (int x = 0; x<=introvertsCount; x++)
                 for (int y = 0; y<=extrovertsCount; y++)
                     for (int state = 0; state < MAX_State; state++)
-                        dp[row][x][y][state] = INT_MIN/2;
-        
+                        dp[row][x][y][state] = std::numeric_limits<int>::min()/2;
+
         dp[0][0][0][0] = 0;
         int ret = 0;
-        
+
         for (int row = 1; row <= m; row++)
             for (int x = 0; x<=introvertsCount; x++)
                 for (int y = 0; y<=extrovertsCount; y++)
@@ -29,14 +29,14 @@ public:
 
                         for (int preState = 0; preState < MAX_State; preState++)
                         {
-                            if (dp[row-1][xx][yy][preState]==INT_MIN/2) continue;
+                            if (dp[row-1][xx][yy][preState]==std::numeric_limits<int>::min()/2) continue;
                             int val = computeScore(preState, state);
                             dp[row][x][y][state] = max(dp[row][x][y][state], dp[row-1][xx][yy][preState] + val);
                         }
-                        
-                        if (row==m) ret = max(ret, dp[row][x][y][state]);                            
+
+                        if (row==m) ret = max(ret, dp[row][x][y][state]);
                     }
-        
+
         return ret;
     }
 
@@ -47,16 +47,16 @@ public:
         {
             if (state%3==1)
                 count1++;
-            else if (state%3==2)                
+            else if (state%3==2)
                 count2++;
             state /= 3;
         }
         return {count1, count2};
     }
-    
+
     int computeScore(int pre, int cur)
     {
-        int ret = 0;        
+        int ret = 0;
         for (int i=0; i<N; i++)
         {
             a[i] = pre%3;

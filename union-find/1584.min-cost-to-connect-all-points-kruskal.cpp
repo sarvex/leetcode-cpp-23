@@ -1,14 +1,7 @@
 #include <algorithm>
-using std::greater;
-
 #include <array>
-using std::array;
-
 #include <queue>
-using std::priority_queue;
-
 #include <vector>
-using std::vector;
 
 class Solution {
   int Father[1000];
@@ -28,15 +21,15 @@ class Solution {
   }
 
 public:
-  int minCostConnectPoints(vector<vector<int>> &points) {
+  int minCostConnectPoints(std::vector<std::vector<int>> &points) {
     int n = points.size();
     for (int i = 0; i < n; i++)
       Father[i] = i;
 
-    priority_queue<array<int, 3>, vector<array<int, 3>>, greater<array<int, 3>>> edges;
+    std::priority_queue<std::array<int, 3>, std::vector<std::array<int, 3>>, std::greater<std::array<int, 3>>> edges;
     for (int i = 0; i < n; i++)
       for (int j = i + 1; j < n; j++) {
-        int dis = abs(points[i][0] - points[j][0]) + abs(points[i][1] - points[j][1]);
+        int dis = std::abs(points[i][0] - points[j][0]) + std::abs(points[i][1] - points[j][1]);
         edges.push({dis, i, j});
       }
 

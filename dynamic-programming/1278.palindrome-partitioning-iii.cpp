@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int palindromePartition(string s, int k) 
+    int palindromePartition(string s, int k)
     {
         int n = s.size();
         s = "#"+s;
@@ -19,15 +19,15 @@ public:
                     count[i][j] = count[i+1][j-1]+1;
             }
 
-        auto dp = vector<vector<int>>(n+1, vector<int>(K+1,INT_MAX/2));
+        auto dp = vector<vector<int>>(n+1, vector<int>(K+1,std::numeric_limits<int>::max()/2));
         dp[0][0] = 0;
         for (int i=1; i<=n; i++)
             for (int k=1; k<=min(i,K); k++)
             {
-                dp[i][k] = INT_MAX;
+                dp[i][k] = std::numeric_limits<int>::max();
                 for (int j=k; j<=i; j++)
                 {
-                    dp[i][k] = min(dp[i][k], dp[j-1][k-1] + count[j][i]); 
+                    dp[i][k] = min(dp[i][k], dp[j-1][k-1] + count[j][i]);
                 }
             }
 

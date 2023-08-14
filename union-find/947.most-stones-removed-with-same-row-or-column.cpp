@@ -1,20 +1,15 @@
 #include <unordered_map>
-using std::unordered_map;
-
 #include <unordered_set>
-using std::unordered_set;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  unordered_map<int, int> Father;
-  unordered_map<int, vector<int>> MapX;
-  unordered_map<int, vector<int>> MapY;
+  std::unordered_map<int, int> Father;
+  std::unordered_map<int, std::vector<int>> MapX;
+  std::unordered_map<int, std::vector<int>> MapY;
   int N = 10000;
 
 public:
-  int removeStones(vector<vector<int>> &stones) {
+  int removeStones(std::vector<std::vector<int>> &stones) {
     for (auto x: stones) {
       int i = x[0];
       int j = x[1];
@@ -42,7 +37,7 @@ public:
       }
     }
 
-    unordered_set<int> Set;
+    std::unordered_set<int> Set;
     for (auto x: stones) {
       int id = x[0] * N + x[1];
       int id0 = FindFather(id);

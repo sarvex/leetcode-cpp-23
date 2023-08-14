@@ -1,14 +1,11 @@
 #include <string>
-using std::string;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  vector<int> Father;
+  std::vector<int> Father;
 
 public:
-  bool equationsPossible(vector<string> &equations) {
+  bool equationsPossible(std::vector<std::string> &equations) {
     Father.resize(26);
     for (int i = 0; i < 26; i++)
       Father[i] = i;

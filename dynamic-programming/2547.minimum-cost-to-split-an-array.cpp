@@ -1,15 +1,15 @@
 class Solution {
     int dp[1005];
 public:
-    int minCost(vector<int>& nums, int k) 
+    int minCost(vector<int>& nums, int k)
     {
-        int n = nums.size();        
+        int n = nums.size();
 
         for (int i=0; i<n; i++)
         {
             unordered_map<int,int>Map;
             int score = 0;
-            dp[i] = INT_MAX;
+            dp[i] = std::numeric_limits<int>::max();
             for (int j=i; j>=0; j--)
             {
                 Map[nums[j]]++;

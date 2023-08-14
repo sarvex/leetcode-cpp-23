@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int minCharacters(string a, string b) 
+    int minCharacters(string a, string b)
     {
         vector<int>countA(26);
         vector<int>countB(26);
@@ -9,7 +9,7 @@ public:
         for (auto ch: b)
             countB[ch-'a']+=1;
 
-        int ret = INT_MAX;
+        int ret = std::numeric_limits<int>::max();
         for (int th = 0; th < 26; th++)
         {
             if (th>0)
@@ -28,7 +28,7 @@ public:
                     change+=countA[i];
                 ret = min(ret, change);
             }
-            
+
             int change = 0;
             for (int i=0; i<26; i++)
                 if (i!=th)
@@ -36,7 +36,7 @@ public:
                     change += countA[i];
                     change += countB[i];
                 }
-            ret = min(ret, change);                        
+            ret = min(ret, change);
         }
         return ret;
     }

@@ -1,22 +1,15 @@
 #include <set>
-using std::set;
-
 #include <string>
-using std::string;
-
 #include <unordered_map>
-using std::unordered_map;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  unordered_map<string, string> Father;
-  unordered_map<string, string> Owner;
-  unordered_map<string, set<string>> Group;
+  std::unordered_map<std::string, std::string> Father;
+  std::unordered_map<std::string, std::string> Owner;
+  std::unordered_map<std::string, std::set<std::string>> Group;
 
 public:
-  vector<vector<string>> accountsMerge(vector<vector<string>> &accounts) {
+  std::vector<std::vector<std::string>> accountsMerge(std::vector<std::vector<std::string>> &accounts) {
     for (int i = 0; i < accounts.size(); i++)
       for (int j = 1; j < accounts[i].size(); j++) {
         Father[accounts[i][j]] = accounts[i][j];
@@ -33,13 +26,13 @@ public:
 
     for (int i = 0; i < accounts.size(); i++)
       for (int j = 1; j < accounts[i].size(); j++) {
-        string parent = FindSet(accounts[i][j]);
+        std::string parent = FindSet(accounts[i][j]);
         Group[parent].insert(accounts[i][j]);
       }
 
-    vector<vector<string>> result;
+    std::vector<std::vector<std::string>> result;
     for (auto a: Group) {
-      vector<string> temp;
+      std::vector<std::string> temp;
       temp.push_back(Owner[a.first]);
       for (auto b: a.second)
         temp.push_back(b);
@@ -48,13 +41,13 @@ public:
     return result;
   }
 
-  string FindSet(string x) {
+  std::string FindSet(std::string x) {
     if (x != Father[x])
       Father[x] = FindSet(Father[x]);
     return Father[x];
   }
 
-  void Union(string x, string y) {
+  void Union(std::string x, std::string y) {
     x = Father[x];
     y = Father[y];
     if (x < y)

@@ -1,15 +1,9 @@
 #include <set>
-using std::multiset;
-
 #include <unordered_map>
-using std::unordered_map;
-
 #include <vector>
-using std::vector;
-
 
 class Solution {
-  vector<int> Father;
+  std::vector<int> Father;
   int FindFather(int x) {
     if (Father[x] != x)
       Father[x] = FindFather(Father[x]);
@@ -25,7 +19,7 @@ class Solution {
   }
 
 public:
-  int minimumHammingDistance(vector<int> &source, vector<int> &target, vector<vector<int>> &allowedSwaps) {
+  int minimumHammingDistance(std::vector<int> &source, std::vector<int> &target, std::vector<std::vector<int>> &allowedSwaps) {
     int n = source.size();
     Father.resize(n);
     for (int i = 0; i < n; i++)
@@ -38,13 +32,13 @@ public:
         Union(a, b);
     }
 
-    unordered_map<int, vector<int>> Map;
+    std::unordered_map<int, std::vector<int>> Map;
     for (int i = 0; i < n; i++)
       Map[FindFather(i)].push_back(i);
 
     int count = 0;
     for (auto x: Map) {
-      multiset<int> Set;
+      std::multiset<int> Set;
       for (auto i: x.second)
         Set.insert(source[i]);
       for (auto i: x.second) {

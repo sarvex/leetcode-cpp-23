@@ -1,11 +1,11 @@
 class Solution {
 public:
-    int mctFromLeafValues(vector<int>& arr) 
+    int mctFromLeafValues(vector<int>& arr)
     {
         int n = arr.size();
-        vector<int>nextGreater(n,INT_MAX);
-        vector<int>prevGreater(n,INT_MAX);
-        
+        vector<int>nextGreater(n,std::numeric_limits<int>::max());
+        vector<int>prevGreater(n,std::numeric_limits<int>::max());
+
         stack<int>Stack;
         for (int i=0; i<arr.size(); i++)
         {
@@ -20,9 +20,9 @@ public:
                     Stack.pop();
                 }
                 Stack.push(i);
-            }                
+            }
         }
-        
+
         while (!Stack.empty()) Stack.pop();
         for (int i=0; i<arr.size(); i++)
         {
@@ -31,7 +31,7 @@ public:
                 if (!Stack.empty()) prevGreater[i] = arr[Stack.top()];
                 Stack.push(i);
             }
-            else 
+            else
             {
                 while (!Stack.empty() && arr[Stack.top()] <= arr[i])
                     Stack.pop();
@@ -40,13 +40,13 @@ public:
                 Stack.push(i);
             }
         }
-        
+
         int result = 0;
         for (int i=0; i<arr.size(); i++)
         {
             int x = min(prevGreater[i], nextGreater[i]);
-            if (x!=INT_MAX)
-                result += arr[i]*x;   
+            if (x!=std::numeric_limits<int>::max())
+                result += arr[i]*x;
         }
         return result;
     }

@@ -1,11 +1,8 @@
 #include <utility>
-using std::pair;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  vector<int> Father;
+  std::vector<int> Father;
   int FindFather(int x) {
     if (Father[x] != x)
       Father[x] = FindFather(Father[x]);
@@ -26,17 +23,17 @@ public:
     return FindFather(m * n) == FindFather(m * n + 1);
   }
 
-  int latestDayToCross(int row, int col, vector<vector<int>> &cells) {
+  int latestDayToCross(int row, int col, std::vector<std::vector<int>> &cells) {
     m = row, n = col;
     Father.resize(m * n + 2);
     for (int i = 0; i < m * n + 2; i++)
       Father[i] = i;
 
-    vector<vector<int>> mat(m, vector<int>(n, 1));
+    std::vector<std::vector<int>> mat(m, std::vector<int>(n, 1));
     for (auto cell: cells)
       mat[cell[0] - 1][cell[1] - 1] = 0;
 
-    vector<pair<int, int>> dir({{1, 0}, {-1, 0}, {0, 1}, {0, -1}});
+    std::vector<std::pair<int, int>> dir({{1, 0}, {-1, 0}, {0, 1}, {0, -1}});
 
     for (int i = 0; i < m; i++)
       for (int j = 0; j < n; j++) {

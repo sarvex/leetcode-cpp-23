@@ -1,8 +1,5 @@
 #include <algorithm>
-using std::sort;
-
 #include <vector>
-using std::vector;
 
 class Solution {
   int Father[10001];
@@ -22,19 +19,19 @@ class Solution {
   }
 
 public:
-  int minimumEffortPath(vector<vector<int>> &heights) {
+  int minimumEffortPath(std::vector<std::vector<int>> &heights) {
     int m = heights.size();
     int n = heights[0].size();
     for (int i = 0; i < m * n; i++)
       Father[i] = i;
 
-    vector<vector<int>> q;
+    std::vector<std::vector<int>> q;
     for (int i = 0; i < m; i++)
       for (int j = 0; j < n; j++) {
         if (i != m - 1) q.push_back({abs(heights[i][j] - heights[i + 1][j]), i * n + j, (i + 1) * n + j});
         if (j != n - 1) q.push_back({abs(heights[i][j] - heights[i][j + 1]), i * n + j, i * n + j + 1});
       }
-    sort(q.begin(), q.end());
+    std::sort(q.begin(), q.end());
 
     for (auto x: q) {
       if (FindFather(x[1]) != FindFather(x[2]))

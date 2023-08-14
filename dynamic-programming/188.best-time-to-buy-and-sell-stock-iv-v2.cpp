@@ -1,7 +1,7 @@
 class Solution {
     int n;
 public:
-    int maxProfit(int k, vector<int>& prices) 
+    int maxProfit(int k, vector<int>& prices)
     {
         n = prices.size();
         prices.insert(prices.begin(),0);
@@ -18,12 +18,12 @@ public:
         return helper(prices,left)[0] + left*k;
     }
 
-    vector<int> helper(vector<int>& prices, int fee) 
+    vector<int> helper(vector<int>& prices, int fee)
     {
         vector<int>sold(n+1,0);
         vector<int>hold(n+1,0);
         sold[0] = 0;
-        hold[0] = INT_MIN/2;
+        hold[0] = std::numeric_limits<int>::min()/2;
         int count0 = 0;
         int count1 = 0;
 
@@ -36,7 +36,7 @@ public:
             }
             else
                 sold[i] = sold[i-1];
-            
+
             if (sold[i-1] - prices[i] - fee  > hold[i-1])
             {
                 hold[i] = sold[i-1] - prices[i] - fee;

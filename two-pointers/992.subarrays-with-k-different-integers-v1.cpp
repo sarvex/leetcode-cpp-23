@@ -1,17 +1,14 @@
 #include <unordered_map>
-using std::unordered_map;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int subarraysWithKDistinct(vector<int> &A, int K) {
+  int subarraysWithKDistinct(std::vector<int> &A, int K) {
     return atMostK(A, K) - atMostK(A, K - 1);
   }
 
-  int atMostK(vector<int> &A, int K) {
-    unordered_map<int, int> Map;
+  int atMostK(std::vector<int> &A, int K) {
+    std::unordered_map<int, int> Map;
     int count = 0;
     int i = 0;
 

@@ -1,20 +1,13 @@
-#include <unordered_map>
-using std::unordered_map;
-
-#include <vector>
-using std::vector;
-
-#include <unordered_set>
-using std::unordered_set;
-
 #include <algorithm>
-using std::max;
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 
 class Solution {
-  unordered_map<int, int> Father;
+  std::unordered_map<int, int> Father;
 
 public:
-  int longestConsecutive(vector<int> &nums) {
+  int longestConsecutive(std::vector<int> &nums) {
     if (nums.size() == 0) return 0;
 
     for (int i = 0; i < nums.size(); i++) {
@@ -29,14 +22,14 @@ public:
       Father[nums[i]] = FindSet(nums[i]);
     }
 
-    unordered_map<int, unordered_set<int>> Map;
+    std::unordered_map<int, std::unordered_set<int>> Map;
     for (auto a: Father)
       Map[a.second].insert(a.first);
 
     int result = 0;
     for (auto a: Map) {
       int n = a.second.size();
-      result = max(result, n);
+      result = std::max(result, n);
     }
     return result;
   }

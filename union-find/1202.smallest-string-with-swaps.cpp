@@ -1,20 +1,13 @@
 #include <algorithm>
-using std::sort;
-
 #include <string>
-using std::string;
-
 #include <unordered_map>
-using std::unordered_map;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  vector<int> Father;
+  std::vector<int> Father;
 
 public:
-  string smallestStringWithSwaps(string s, vector<vector<int>> &pairs) {
+  std::string smallestStringWithSwaps(std::string s, std::vector<std::vector<int>> &pairs) {
     int N = s.size();
     Father.resize(N);
     for (int i = 0; i < N; i++)
@@ -27,13 +20,13 @@ public:
         Union(a, b);
     }
 
-    unordered_map<int, vector<int>> Map;// root idx -> all indexes
+    std::unordered_map<int, std::vector<int>> Map;// root idx -> all indexes
     for (int i = 0; i < N; i++) {
       Map[FindFather(i)].push_back(i);
     }
 
     for (auto x: Map) {
-      string temp;
+      std::string temp;
       for (auto idx: x.second)
         temp.push_back(s[idx]);
       sort(temp.begin(), temp.end());

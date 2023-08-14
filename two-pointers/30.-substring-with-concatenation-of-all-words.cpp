@@ -1,27 +1,22 @@
 #include <string>
-using std::string;
-
 #include <unordered_map>
-using std::unordered_map;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  vector<int> findSubstring(string s, vector<string> &words) {
+  std::vector<int> findSubstring(std::string s, std::vector<std::string> &words) {
     int N = words[0].size();
     int COUNT = words.size();
-    unordered_map<string, int> Table;
+    std::unordered_map<std::string, int> Table;
     for (int i = 0; i < words.size(); i++)
       Table[words[i]]++;
 
-    vector<int> results;
+    std::vector<int> results;
     for (int start = 0; start < N; start++) {
       int i = start;
       int j = i;
       int count = 0;
-      unordered_map<string, int> Map;
+      std::unordered_map<std::string, int> Map;
 
       while (j < s.size()) {
         if (Table.find(s.substr(j, N)) == Table.end()) {

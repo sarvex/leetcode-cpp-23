@@ -1,40 +1,36 @@
-class SnapshotArray {        
-    int vals[50000];
-    vector<vector<pair<int,int>>>snaps;
-    unordered_set<int>changed;
-    int snapId;
+class SnapshotArray {
+  int vals[50000];
+  vector<vector<pair<int, int>>> snaps;
+  unordered_set<int> changed;
+  int snapId;
+
 public:
-    SnapshotArray(int length) 
-    {    
-        snapId = 0;
-        snaps.resize(length);
-        for (int i=0; i<length; i++)
-            snaps[i].push_back({-1,0});
+  SnapshotArray(int length) {
+    snapId = 0;
+    snaps.resize(length);
+    for (int i = 0; i < length; i++)
+      snaps[i].push_back({-1, 0});
+  }
+
+  void set(int index, int val) {
+    vals[index] = val;
+    changed.insert(index);
+  }
+
+  int snap() {
+    for (int index: changed) {
+      snaps[index].push_back({snapId, vals[index]});
     }
-    
-    void set(int index, int val) 
-    {
-        vals[index] = val;
-        changed.insert(index);
-    }
-    
-    int snap() 
-    {
-        for (int index: changed)
-        {
-            snaps[index].push_back({snapId, vals[index]});
-        }
-        snapId++;
-        changed.clear();
-        return snapId-1;
-    }
-    
-    int get(int index, int snap_id) 
-    {
-        auto iter = upper_bound(snaps[index].begin(), snaps[index].end(), make_pair(snap_id, INT_MAX));
-        iter = prev(iter,1);
-        return iter->second;                                        
-    }
+    snapId++;
+    changed.clear();
+    return snapId - 1;
+  }
+
+  int get(int index, int snap_id) {
+    auto iter = upper_bound(snaps[index].begin(), snaps[index].end(), make_pair(snap_id, std::numeric_limits<int>::max()));
+    iter = prev(iter, 1);
+    return iter->second;
+  }
 };
 
 /**

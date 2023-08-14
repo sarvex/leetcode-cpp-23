@@ -9,7 +9,7 @@ public:
     sort(cookies.rbegin(), cookies.rend());
     int n = cookies.size();
 
-    int left = 1, right = INT_MAX;
+    int left = 1, right = std::numeric_limits<int>::max();
     while (left < right) {
       for (int i = 0; i < k; i++)
         plan[i] = 0;

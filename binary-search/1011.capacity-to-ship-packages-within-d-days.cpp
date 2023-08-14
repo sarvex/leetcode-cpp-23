@@ -4,7 +4,7 @@
 class Solution {
 public:
   int shipWithinDays(std::vector<int> &weights, int D) {
-    int left = INT_MAX;
+    int left = std::numeric_limits<int>::max();
     int right = 0;
     for (auto x: weights) {
       left = std::min(left, x);

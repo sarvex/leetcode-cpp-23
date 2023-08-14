@@ -1,13 +1,10 @@
 #include <algorithm>
-using std::sort;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int findPairs(vector<int> &nums, int k) {
-    sort(nums.begin(), nums.end());
+  int findPairs(std::vector<int> &nums, int k) {
+    std::sort(nums.begin(), nums.end());
 
     int i = 0;
     int j = 0;

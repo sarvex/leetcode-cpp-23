@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<int> minDifference(vector<int>& nums, vector<vector<int>>& queries) 
+    vector<int> minDifference(vector<int>& nums, vector<vector<int>>& queries)
     {
         int n = nums.size();
         vector<vector<int>>presum(101, vector<int>(n,0));
@@ -24,7 +24,7 @@ public:
 
                 if (arr.size()>=2 && arr.back() - arr[arr.size()-2]==1)
                     break;
-            }            
+            }
 
             if (arr.size()<=1)
             {
@@ -32,7 +32,7 @@ public:
             }
             else
             {
-                int gap = INT_MAX;
+                int gap = std::numeric_limits<int>::max();
                 for (int i=1; i<arr.size(); i++)
                     gap = min(gap, arr[i]-arr[i-1]);
                 rets.push_back(gap);

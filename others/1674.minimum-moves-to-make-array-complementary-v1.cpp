@@ -1,11 +1,11 @@
 class Solution {
     int diff[200002];
 public:
-    int minMoves(vector<int>& nums, int limit) 
-    {        
+    int minMoves(vector<int>& nums, int limit)
+    {
         int n = nums.size();
         for (int i=0; i<n/2; i++)
-        {            
+        {
             int a = min(nums[i],nums[n-1-i]);
             int b = max(nums[i],nums[n-1-i]);
 
@@ -16,7 +16,7 @@ public:
             diff[limit+b+1]+=1;
         }
 
-        int ret = INT_MAX;
+        int ret = std::numeric_limits<int>::max();
         int count = 0;
         for (int i=2; i<=limit*2; i++)
         {

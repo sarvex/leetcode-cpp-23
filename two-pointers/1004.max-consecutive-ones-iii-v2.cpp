@@ -1,12 +1,9 @@
 #include <algorithm>
-using std::max;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int longestOnes(vector<int> &A, int K) {
+  int longestOnes(std::vector<int> &A, int K) {
     int n = A.size();
     int j = 0;
     int ret = 0;
@@ -16,7 +13,7 @@ public:
         if (A[j] == 0) count++;
         j++;
       }
-      ret = max(ret, j - i);
+      ret = std::max(ret, j - i);
       if (A[i] == 0) count--;
     }
     return ret;

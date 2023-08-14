@@ -1,13 +1,13 @@
-class Solution {    
+class Solution {
 public:
-    int minSpaceWastedKResizing(vector<int>& nums, int k) 
+    int minSpaceWastedKResizing(vector<int>& nums, int k)
     {
         int n = nums.size();
         int dp[n][k+1];
 
         for (int i=0; i<n; i++)
             for (int j=0; j<=k; j++)
-                dp[i][j] = INT_MAX/2;
+                dp[i][j] = std::numeric_limits<int>::max()/2;
 
         int mx = 0;
         int sum = 0;
@@ -16,9 +16,9 @@ public:
             mx = max(mx, nums[i]);
             sum += nums[i];
             dp[i][0] = mx*(i+1)-sum;
-        }        
+        }
 
-        for (int i=1; i<n; i++)          
+        for (int i=1; i<n; i++)
             for (int j=1; j<=min(i, k); j++)
             {
                 int mx = 0;
@@ -31,7 +31,7 @@ public:
                 }
             }
 
-        int ret = INT_MAX/2;
+        int ret = std::numeric_limits<int>::max()/2;
         for (int j=0; j<=k; j++)
             ret = min(ret, dp[n-1][j]);
         return ret;

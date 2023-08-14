@@ -1,8 +1,8 @@
 class Solution {
 public:
-    int nextGreaterElement(int n) 
+    int nextGreaterElement(int n)
     {
-        vector<int>digits;        
+        vector<int>digits;
         while(n>0)
         {
             digits.push_back(n%10);
@@ -23,12 +23,12 @@ public:
             j--;
         swap(digits[i], digits[j]);
         sort(digits.begin()+i+1, digits.end());
-        
+
         long long ret=0;
         for (int i=0; i<m; i++)
             ret = ret*10+digits[i];
-        
-        if (ret>INT_MAX) return -1;
-        else return ret;        
+
+        if (ret>std::numeric_limits<int>::max()) return -1;
+        else return ret;
     }
 };

@@ -22,16 +22,16 @@ public:
         checkNodes(node->right);
     }
 
-    TreeNode* canMerge(vector<TreeNode*>& trees) 
+    TreeNode* canMerge(vector<TreeNode*>& trees)
     {
-        int n = trees.size();        
+        int n = trees.size();
         for (int i=0; i<n; i++)
         {
             val2root[trees[i]->val] = trees[i];
             checkNodes(trees[i]->left);
             checkNodes(trees[i]->right);
         }
-        
+
         int count = 0;
         TreeNode* root;
         for (int i=0; i<n; i++)
@@ -40,12 +40,12 @@ public:
             {
                 root = trees[i];
                 count++;
-            }                
+            }
         }
         if (count != 1) return NULL;
 
         visited.insert(root->val);
-        bool ok = dfs(root, INT_MIN, INT_MAX);
+        bool ok = dfs(root, std::numeric_limits<int>::min(), std::numeric_limits<int>::max());
         if (ok && visited.size()==n)
             return root;
         else

@@ -1,14 +1,11 @@
 #include <algorithm>
-using std::sort;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  static bool cmp(vector<int> &a, vector<int> &b) {
+  static bool cmp(std::vector<int> &a, std::vector<int> &b) {
     return a[2] < b[2];
   }
-  vector<int> Father;
+  std::vector<int> Father;
 
 public:
   int findFather(int x) {
@@ -25,12 +22,12 @@ public:
       Father[x] = y;
   }
 
-  int minimumCost(int N, vector<vector<int>> &connections) {
+  int minimumCost(int N, std::vector<std::vector<int>> &connections) {
     Father.resize(N + 1);
     for (int i = 1; i <= N; i++)
       Father[i] = i;
 
-    sort(connections.begin(), connections.end(), cmp);
+    std::sort(connections.begin(), connections.end(), cmp);
 
     int result = 0;
     for (auto edge: connections) {

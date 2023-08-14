@@ -1,11 +1,11 @@
 class Solution {
 public:
-    int minDistance(vector<int>& houses, int K) 
+    int minDistance(vector<int>& houses, int K)
     {
         int n = houses.size();
         sort(houses.begin(), houses.end());
-        houses.insert(houses.begin(), INT_MIN);
-        vector<vector<int>>dp(n+1, vector<int>(K+1, INT_MAX/2));
+        houses.insert(houses.begin(), std::numeric_limits<int>::min());
+        vector<vector<int>>dp(n+1, vector<int>(K+1, std::numeric_limits<int>::max()/2));
 
         int range[n+1][n+1];
         for (int i=1; i<=n; i++)

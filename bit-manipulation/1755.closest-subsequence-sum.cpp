@@ -1,13 +1,11 @@
 #include <limits>
 #include <vector>
 
-class Solution
-{
-  int ret = INT_MAX;
+class Solution {
+  int ret = std::numeric_limits<int>::max();
 
 public:
-  int minAbsDifference(std::vector<int> &nums, int goal)
-  {
+  int minAbsDifference(std::vector<int> &nums, int goal) {
     int m = nums.size() / 2;
     int n = nums.size() - m;
     std::vector<int> nums1(nums.begin(), nums.begin() + m);
@@ -39,33 +37,25 @@ public:
   //     return sums;
   // }
 
-  std::vector<int> getSubSetsSum(std::vector<int> &nums)
-  {
+  std::vector<int> getSubSetsSum(std::vector<int> &nums) {
     std::vector<int> sums({0});
-    for (int x : nums)
-    {
+    for (int x: nums) {
       std::vector<int> temp;
       int i = 0, j = 0, n = sums.size();
-      while (i < n && j < n)
-      {
-        if (sums[i] + x < sums[j])
-        {
+      while (i < n && j < n) {
+        if (sums[i] + x < sums[j]) {
           temp.push_back(sums[i] + x);
           i++;
-        }
-        else
-        {
+        } else {
           temp.push_back(sums[j]);
           j++;
         }
       }
-      while (i < n)
-      {
+      while (i < n) {
         temp.push_back(sums[i] + x);
         i++;
       }
-      while (j < n)
-      {
+      while (j < n) {
         temp.push_back(sums[j]);
         j++;
       }
@@ -74,10 +64,8 @@ public:
     return sums;
   }
 
-  void findAns(std::vector<int> &a, std::vector<int> &b, int goal)
-  {
-    for (auto x : a)
-    {
+  void findAns(std::vector<int> &a, std::vector<int> &b, int goal) {
+    for (auto x: a) {
       auto iter = lower_bound(b.begin(), b.end(), goal - x);
       if (iter != b.end())
         ret = min(ret, abs(goal - x - *iter));

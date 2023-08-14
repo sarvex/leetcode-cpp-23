@@ -1,16 +1,11 @@
 #include <algorithm>
-using std::max;
-
 #include <string>
-using std::string;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int lengthOfLongestSubstringKDistinct(string s, int k) {
-    vector<int> freq(256, 0);
+  int lengthOfLongestSubstringKDistinct(std::string s, int k) {
+    std::vector<int> freq(256, 0);
     int n = s.size();
     int j = 0;
     int ret = 0;
@@ -21,7 +16,7 @@ public:
         count += (freq[s[j]] == 1);
         j++;
       }
-      ret = max(ret, j - i);
+      ret = std::max(ret, j - i);
 
       freq[s[i]]--;
       count -= (freq[s[i]] == 0);

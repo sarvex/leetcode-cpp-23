@@ -2,20 +2,20 @@ class SORTracker {
     set<pair<int,string>>Set;
     set<pair<int,string>>::iterator iter;
 public:
-    SORTracker() 
+    SORTracker()
     {
-        Set.insert({INT_MIN, ""});
+        Set.insert({std::numeric_limits<int>::min(), ""});
         iter = Set.begin();
     }
-    
-    void add(string name, int score) 
+
+    void add(string name, int score)
     {
         Set.insert({-score, name});
         if (make_pair(-score, name) < *iter)
             iter = prev(iter);
     }
-    
-    string get() 
+
+    string get()
     {
         iter = next(iter);
         return iter->second;

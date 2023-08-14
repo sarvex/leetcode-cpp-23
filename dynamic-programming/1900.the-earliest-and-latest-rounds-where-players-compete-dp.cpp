@@ -4,7 +4,7 @@ private:
     int dp2[30][30][30];
 
 public:
-    pair<int, int> dp(int n, int a, int b) 
+    pair<int, int> dp(int n, int a, int b)
     {
         if (dp1[n][a][b]!=0) {
             return {dp1[n][a][b], dp2[n][a][b]};
@@ -26,7 +26,7 @@ public:
         int half_point = (n+1)/2;
         int bb = n+1-b;
 
-        int maxVal = INT_MIN/2, minVal = INT_MAX/2;
+        int maxVal = std::numeric_limits<int>::min()/2, minVal = std::numeric_limits<int>::max()/2;
 
         if (b > half_point)
         {
@@ -37,8 +37,8 @@ public:
                 {
                     auto temp = dp((n+1)/2, x+1, x+1+y+(mid+1)/2+1);
                     minVal = min(minVal, temp.first + 1);
-                    maxVal = max(maxVal, temp.second + 1);                
-                }            
+                    maxVal = max(maxVal, temp.second + 1);
+                }
         }
         else {
             range2 = b-a-1;
@@ -47,8 +47,8 @@ public:
                 {
                     auto temp = dp((n+1)/2, x+1, x+1+y+1);
                     minVal = min(minVal, temp.first + 1);
-                    maxVal = max(maxVal, temp.second + 1);                
-                }            
+                    maxVal = max(maxVal, temp.second + 1);
+                }
         }
         dp1[n][a][b] = minVal;
         dp2[n][a][b] = maxVal;

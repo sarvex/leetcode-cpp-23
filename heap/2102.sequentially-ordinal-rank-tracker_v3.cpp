@@ -1,34 +1,35 @@
-using PIS = pair<int,string>;
+#include <algorithm>
+#include <queue>
+#include <string>
+#include <utility>
+
 class SORTracker {
-    priority_queue<PIS>pq1;
-    priority_queue<PIS,vector<PIS>,greater<>>pq2;
-    PIS cur;
+  std::priority_queue<std::pair<int, std::string>> pq1;
+  std::priority_queue<std::pair<int, std::string>, vector<std::pair<int, std::string>>, greater<>> pq2;
+  std::pair<int, std::string> cur;
+
 public:
-    SORTracker() 
-    {        
-        pq1.push({INT_MIN, "#"});
+  SORTracker() {
+    pq1.push({std::numeric_limits<int>::min(), "#"});
+  }
+
+  void add(std::string name, int score) {
+    std::pair<int, std::string> temp = make_pair(-score, name);
+    if (temp > pq1.top())
+      pq2.push(temp);
+    else {
+      pq2.push(pq1.top());
+      pq1.pop();
+      pq1.push(temp);
     }
-    
-    void add(string name, int score) 
-    {
-        PIS temp = make_pair(-score, name);
-        if (temp > pq1.top())
-            pq2.push(temp);
-        else
-        {
-            pq2.push(pq1.top());
-            pq1.pop();
-            pq1.push(temp);            
-        }
-    }
-    
-    string get() 
-    {
-        auto temp = pq2.top();
-        pq1.push(temp);
-        pq2.pop();
-        return temp.second;
-    }
+  }
+
+  std::string get() {
+    auto temp = pq2.top();
+    pq1.push(temp);
+    pq2.pop();
+    return temp.second;
+  }
 };
 
 /**

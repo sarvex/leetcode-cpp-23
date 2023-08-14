@@ -1,23 +1,16 @@
 #include <algorithm>
-using std::greater;
-
 #include <queue>
-using std::priority_queue;
-
 #include <utility>
-using std::pair;
-
 #include <vector>
-using std::vector;
 
 class Solution {
   int visited[1000];
 
 public:
-  int minCostConnectPoints(vector<vector<int>> &points) {
+  int minCostConnectPoints(std::vector<std::vector<int>> &points) {
     int n = points.size();
 
-    vector<vector<pair<int, int>>> edges(n);
+    std::vector<std::vector<std::pair<int, int>>> edges(n);
     for (int i = 0; i < n; i++)
       for (int j = i + 1; j < n; j++) {
         int dis = abs(points[i][0] - points[j][0]) + abs(points[i][1] - points[j][1]);
@@ -25,7 +18,7 @@ public:
         edges[j].push_back({dis, i});
       }
 
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq(edges[0].begin(), edges[0].end());
+    std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, std::greater<std::pair<int, int>>> pq(edges[0].begin(), edges[0].end());
     visited[0] = 1;
     int result = 0;
 

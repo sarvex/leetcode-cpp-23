@@ -1,17 +1,10 @@
 #include <algorithm>
-using std::sort;
-
 #include <queue>
-using std::queue;
-
 #include <utility>
-using std::pair;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  vector<int> Father;
+  std::vector<int> Father;
   int FindFather(int x) {
     if (Father[x] != x)
       Father[x] = FindFather(Father[x]);
@@ -28,7 +21,7 @@ class Solution {
   }
 
 public:
-  vector<vector<int>> matrixRankTransform(vector<vector<int>> &matrix) {
+  std::vector<std::vector<int>> matrixRankTransform(std::vector<std::vector<int>> &matrix) {
     int m = matrix.size();
     int n = matrix[0].size();
     Father.resize(m * n);
@@ -36,11 +29,11 @@ public:
       for (int j = 0; j < n; j++)
         Father[i * n + j] = i * n + j;
 
-    vector<vector<int>> next(m * n);
-    vector<int> inDegree(m * n, 0);
+    std::vector<std::vector<int>> next(m * n);
+    std::vector<int> inDegree(m * n, 0);
 
     for (int i = 0; i < m; i++) {
-      vector<pair<int, int>> temp;
+      std::vector<std::pair<int, int>> temp;
       for (int j = 0; j < n; j++)
         temp.push_back({matrix[i][j], i * n + j});
       sort(temp.begin(), temp.end());
@@ -56,7 +49,7 @@ public:
     }
 
     for (int j = 0; j < n; j++) {
-      vector<pair<int, int>> temp;
+      std::vector<std::pair<int, int>> temp;
       for (int i = 0; i < m; i++)
         temp.push_back({matrix[i][j], i * n + j});
       sort(temp.begin(), temp.end());
@@ -71,7 +64,7 @@ public:
       }
     }
 
-    vector<vector<int>> group(m * n);
+    std::vector<std::vector<int>> group(m * n);
     for (int i = 0; i < m; i++)
       for (int j = 0; j < n; j++) {
         int root = FindFather(i * n + j);
@@ -80,7 +73,7 @@ public:
           inDegree[root] += inDegree[i * n + j];
       }
 
-    queue<int> q;
+    std::queue<int> q;
     for (int i = 0; i < m; i++)
       for (int j = 0; j < n; j++) {
         if (Father[i * n + j] == i * n + j && inDegree[i * n + j] == 0)
@@ -88,7 +81,7 @@ public:
       }
 
     int idx = 1;
-    auto rets = vector<vector<int>>(m, vector<int>(n, -1));
+    auto rets = std::vector<std::vector<int>>(m, std::vector<int>(n, -1));
     while (!q.empty()) {
       int len = q.size();
       while (len--) {

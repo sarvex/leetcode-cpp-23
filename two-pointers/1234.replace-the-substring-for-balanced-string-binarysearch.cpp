@@ -1,15 +1,12 @@
 #include <string>
-using std::string;
-
 #include <unordered_map>
-using std::unordered_map;
 
 class Solution {
   int n;
-  unordered_map<char, int> count;
+  std::unordered_map<char, int> count;
 
 public:
-  int balancedString(string s) {
+  int balancedString(std::string s) {
     n = s.size();
     for (auto ch: s)
       count[ch] += 1;
@@ -30,8 +27,8 @@ public:
     return left;
   }
 
-  bool isOK(int k, string &s) {
-    unordered_map<char, int> sum;
+  bool isOK(int k, std::string &s) {
+    std::unordered_map<char, int> sum;
     for (int i = 0; i < n; i++) {
       sum[s[i]] += 1;
       if (i >= k)

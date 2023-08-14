@@ -1,13 +1,13 @@
 class Solution {
 public:
-    int minScoreTriangulation(vector<int>& A) 
+    int minScoreTriangulation(vector<int>& A)
     {
         int N = A.size();
-        auto dp = vector<vector<int>>(N,vector<int>(N,INT_MAX/3));
-        
+        auto dp = vector<vector<int>>(N,vector<int>(N,std::numeric_limits<int>::max()/3));
+
         for (int i=0; i<N-1; i++)
             dp[i][i+1] = 0;
-        
+
         for (int len=3; len<=N; len++)
             for (int i=0; i+len-1<N; i++)
             {

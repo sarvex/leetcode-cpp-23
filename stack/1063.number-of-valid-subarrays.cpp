@@ -1,8 +1,8 @@
 class Solution {
 public:
-    int validSubarrays(vector<int>& nums) 
+    int validSubarrays(vector<int>& nums)
     {
-        nums.push_back(INT_MIN);
+        nums.push_back(std::numeric_limits<int>::min());
         stack<int>Stack;
         int count = 0;
         for (int i=0; i<nums.size(); i++)
@@ -11,9 +11,9 @@ public:
             {
                 count += i-Stack.top();
                 Stack.pop();
-            }            
+            }
             Stack.push(i);
         }
-        return count;        
+        return count;
     }
 };

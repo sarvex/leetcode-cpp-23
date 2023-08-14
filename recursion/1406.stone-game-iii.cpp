@@ -1,6 +1,6 @@
 class Solution {
 public:
-    string stoneGameIII(vector<int>& stoneValue) 
+    string stoneGameIII(vector<int>& stoneValue)
     {
         int n = stoneValue.size();
         stoneValue.insert(stoneValue.begin(),0);
@@ -9,7 +9,7 @@ public:
         for (int i=1; i<=n; i++)
             presum[i] = presum[i-1]+stoneValue[i];
 
-        vector<int>dp(n+1,INT_MIN);  // dp[i] : the max score when player can get after i piles have been taken
+        vector<int>dp(n+1,std::numeric_limits<int>::min());  // dp[i] : the max score when player can get after i piles have been taken
         dp[n] = 0;
 
         for (int i = n-1; i >= 0; i--)

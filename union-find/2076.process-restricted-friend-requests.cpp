@@ -1,8 +1,7 @@
 #include <vector>
-using std::vector;
 
 class Solution {
-  vector<int> Father;
+  std::vector<int> Father;
   int FindFather(int x) {
     if (Father[x] != x)
       Father[x] = FindFather(Father[x]);
@@ -18,11 +17,11 @@ class Solution {
   }
 
 public:
-  vector<bool> friendRequests(int n, vector<vector<int>> &restrictions, vector<vector<int>> &requests) {
+  std::vector<bool> friendRequests(int n, std::vector<std::vector<int>> &restrictions, std::vector<std::vector<int>> &requests) {
     Father.resize(n);
     for (int i = 0; i < n; i++) Father[i] = i;
 
-    vector<bool> rets;
+    std::vector<bool> rets;
     for (auto &req: requests) {
       int x = req[0], y = req[1];
       int f_x = FindFather(x), f_y = FindFather(y);

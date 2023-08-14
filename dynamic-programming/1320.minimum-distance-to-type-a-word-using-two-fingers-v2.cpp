@@ -1,13 +1,13 @@
 class Solution {
 public:
-    int minimumDistance(string word) 
-    {            
+    int minimumDistance(string word)
+    {
         int n = word.size();
-        auto dp = vector<vector<int>>(n,vector<int>(26,INT_MAX/2));
-        
-        for (int i=0; i<26; i++)        
+        auto dp = vector<vector<int>>(n,vector<int>(26,std::numeric_limits<int>::max()/2));
+
+        for (int i=0; i<26; i++)
             dp[0][i] = 0;
-        
+
         for (int k=1; k<n; k++)
         {
             int cur = word[k]-'A';
@@ -15,17 +15,17 @@ public:
 
             for (int i=0; i<26; i++)
             {
-                dp[k][i] = min(dp[k][i], dp[k-1][i]+dis(prev,cur));                
+                dp[k][i] = min(dp[k][i], dp[k-1][i]+dis(prev,cur));
                 dp[k][i] = min(dp[k][i], dp[k-1][cur]+dis(prev,i));
             }
         }
-                
-        int ret = INT_MAX;
+
+        int ret = std::numeric_limits<int>::max();
         for (int i=0; i<26; i++)
             ret = min(ret, dp[n-1][i]);
         return ret;
     }
-    
+
     int dis(int a, int b)
     {
         if (a==26) return 0;

@@ -15,7 +15,7 @@ public:
     }
 
     std::map<long long, long long> dist;
-    long long ret = INT_MAX;
+    long long ret = std::numeric_limits<int>::max();
     while (!pq.empty()) {
       auto [len, id] = pq.top();
       pq.pop();

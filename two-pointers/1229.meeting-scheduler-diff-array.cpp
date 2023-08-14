@@ -1,14 +1,9 @@
 #include <algorithm>
-using std::sort;
-
 #include <utility>
-using std::pair;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  static bool cmp(pair<int, int> a, pair<int, int> b) {
+  static bool cmp(std::pair<int, int> a, std::pair<int, int> b) {
     if (a.first == b.first)
       return a.second > b.second;
     else
@@ -16,8 +11,8 @@ class Solution {
   }
 
 public:
-  vector<int> minAvailableDuration(vector<vector<int>> &slots1, vector<vector<int>> &slots2, int duration) {
-    vector<pair<int, int>> p;
+  std::vector<int> minAvailableDuration(std::vector<std::vector<int>> &slots1, std::vector<std::vector<int>> &slots2, int duration) {
+    std::vector<std::pair<int, int>> p;
     for (auto x: slots1) {
       p.push_back({x[0], 1});
       p.push_back({x[1], -1});
@@ -30,7 +25,7 @@ public:
 
     int count = 0;
     int start;
-    vector<int> ret;
+    std::vector<int> ret;
     for (int i = 0; i < p.size(); i++) {
       count += p[i].second;
       if (p[i].second == 1 && count == 2) {

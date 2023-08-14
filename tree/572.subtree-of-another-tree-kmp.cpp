@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    bool isSubtree(TreeNode* s, TreeNode* t) 
+    bool isSubtree(TreeNode* s, TreeNode* t)
     {
         vector<int>S, T;
         convert(s, S);
@@ -36,7 +36,7 @@ public:
     {
         if (node==NULL)
         {
-            arr.push_back(INT_MAX);
+            arr.push_back(std::numeric_limits<int>::max());
             return;
         }
         arr.push_back(node->val);

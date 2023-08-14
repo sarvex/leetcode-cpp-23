@@ -1,12 +1,9 @@
 #include <algorithm>
-using std::swap;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  void moveZeroes(vector<int> &nums) {
+  void moveZeroes(std::vector<int> &nums) {
     int left = 0;
     int right = 0;
 
@@ -14,7 +11,7 @@ public:
       if (nums[right] == 0) {
         right++;
       } else {
-        swap(nums[left], nums[right]);
+        std::swap(nums[left], nums[right]);
         left++;
         right++;
       }

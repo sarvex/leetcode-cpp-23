@@ -1,12 +1,9 @@
 #include <algorithm>
-using std::max;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int maxSatisfied(vector<int> &customers, vector<int> &grumpy, int X) {
+  int maxSatisfied(std::vector<int> &customers, std::vector<int> &grumpy, int X) {
     int sum = 0;
     int n = grumpy.size();
     for (int i = 0; i < n; i++)
@@ -19,7 +16,7 @@ public:
         sum += customers[i];
       if (i >= X && grumpy[i - X] == 1)
         sum -= customers[i - X];
-      ret = max(ret, sum);
+      ret = std::max(ret, sum);
     }
     return ret;
   }

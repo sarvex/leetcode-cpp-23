@@ -1,17 +1,14 @@
 #include <map>
-using std::map;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  vector<int> next[100005];
+  std::vector<int> next[100005];
   int ans = 0;
   int n;
-  vector<int> vals;
+  std::vector<int> vals;
 
 public:
-  int numberOfGoodPaths(vector<int> &vals, vector<vector<int>> &edges) {
+  int numberOfGoodPaths(std::vector<int> &vals, std::vector<std::vector<int>> &edges) {
     this->vals = vals;
     n = vals.size();
     for (auto &edge: edges) {
@@ -22,13 +19,13 @@ public:
     return ans + n;
   }
 
-  map<int, int> dfs(int cur, int parent) {
-    map<int, int> count;
+  std::map<int, int> dfs(int cur, int parent) {
+    std::map<int, int> count;
     count[vals[cur]] += 1;
 
     for (int child: next[cur]) {
       if (child == parent) continue;
-      map<int, int> tmp = dfs(child, cur);
+      std::map<int, int> tmp = dfs(child, cur);
 
       auto iter = tmp.lower_bound(vals[cur]);
       tmp.erase(tmp.begin(), iter);

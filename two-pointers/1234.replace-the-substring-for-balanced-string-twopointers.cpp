@@ -1,18 +1,13 @@
 #include <algorithm>
-using std::min;
-
 #include <string>
-using std::string;
-
 #include <unordered_map>
-using std::unordered_map;
 
 class Solution {
   int n;
-  unordered_map<char, int> count;
+  std::unordered_map<char, int> count;
 
 public:
-  int balancedString(string s) {
+  int balancedString(std::string s) {
     n = s.size();
     for (auto ch: s)
       count[ch] += 1;
@@ -23,21 +18,21 @@ public:
     if (flag == 1) return 0;
 
     int j = 0;
-    unordered_map<char, int> sum;
-    int ret = INT_MAX;
+    std::unordered_map<char, int> sum;
+    int ret = std::numeric_limits<int>::max();
     for (int i = 0; i < n; i++) {
       while (j < n && !isOK(sum)) {
         sum[s[j]] += 1;
         j++;
       }
       if (isOK(sum))
-        ret = min(ret, j - i);
+        ret = std::min(ret, j - i);
       sum[s[i]] -= 1;
     }
     return ret;
   }
 
-  bool isOK(unordered_map<char, int> &sum) {
+  bool isOK(std::unordered_map<char, int> &sum) {
     for (auto x: count) {
       char ch = x.first;
       if (count[ch] - sum[ch] > n / 4)

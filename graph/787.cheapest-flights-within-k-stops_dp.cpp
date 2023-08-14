@@ -1,10 +1,10 @@
 class Solution {
 public:
-    int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int K) 
+    int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int K)
     {
-        vector<vector<int>>dp(n, vector<int>(K+2, INT_MAX/2));
+        vector<vector<int>>dp(n, vector<int>(K+2, std::numeric_limits<int>::max()/2));
         dp[src][0] = 0;
-        int ret = INT_MAX/2;
+        int ret = std::numeric_limits<int>::max()/2;
 
         for (int j=1; j<=K+1; j++)
             for (auto flight: flights)
@@ -14,6 +14,6 @@ public:
                 if (b==dst) ret = min(ret, dp[b][j]);
             }
 
-        return ret >= INT_MAX/2 ? -1 : ret;
+        return ret >= std::numeric_limits<int>::max()/2 ? -1 : ret;
     }
 };

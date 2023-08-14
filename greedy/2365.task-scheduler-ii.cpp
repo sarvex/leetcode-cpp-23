@@ -1,18 +1,19 @@
-using LL = long long;
+#include <unordered_map>
+#include <vector>
+
+
 class Solution {
 public:
-    long long taskSchedulerII(vector<int>& tasks, int space) 
-    {
-        int n = tasks.size();
-        unordered_map<int,LL>Map;        
-        LL cur = 0;
-        for (int i=0; i<n; i++)
-        {
-            if (Map.find(tasks[i])!=Map.end())        
-                cur = max(cur, Map[tasks[i]]);            
-            Map[tasks[i]] = cur+(LL)space+1;
-            cur++;
-        }
-        return cur;        
+  long long taskSchedulerII(std::vector<int> &tasks, int space) {
+    int n = tasks.size();
+    std::unordered_map<int, long long> Map;
+    long long cur = 0;
+    for (int i = 0; i < n; i++) {
+      if (Map.find(tasks[i]) != Map.end())
+        cur = std::max(cur, Map[tasks[i]]);
+      Map[tasks[i]] = cur + (long long) space + 1;
+      cur++;
     }
+    return cur;
+  }
 };

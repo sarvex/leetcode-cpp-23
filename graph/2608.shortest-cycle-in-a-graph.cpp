@@ -2,7 +2,7 @@ class Solution {
     unordered_set<int>next[1005];
     int n;
 public:
-    int findShortestCycle(int n, vector<vector<int>>& edges) 
+    int findShortestCycle(int n, vector<vector<int>>& edges)
     {
         this->n = n;
         for (auto&edge: edges)
@@ -12,7 +12,7 @@ public:
             next[b].insert(a);
         }
 
-        int ret = INT_MAX;
+        int ret = std::numeric_limits<int>::max();
         for (auto&edge: edges)
         {
             int a = edge[0], b = edge[1];
@@ -23,7 +23,7 @@ public:
             next[b].insert(a);
         }
 
-        if (ret==INT_MAX) return -1;
+        if (ret==std::numeric_limits<int>::max()) return -1;
         return ret+1;
     }
 
@@ -52,6 +52,6 @@ public:
             }
             step++;
         }
-        return INT_MAX;        
+        return std::numeric_limits<int>::max();
     }
 };

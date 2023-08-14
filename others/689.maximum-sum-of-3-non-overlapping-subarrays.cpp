@@ -1,14 +1,14 @@
 class Solution {
 public:
-    vector<int> maxSumOfThreeSubarrays(vector<int>& nums, int k) 
+    vector<int> maxSumOfThreeSubarrays(vector<int>& nums, int k)
     {
         int N=nums.size();
-        
+
         vector<int>Sum(N);
         Sum[0]=nums[0];
         for (int i=1; i<N; i++)
-            Sum[i]=Sum[i-1]+nums[i];        
-        
+            Sum[i]=Sum[i-1]+nums[i];
+
         vector<int>LeftSum(N);
         vector<int>LeftIdx(N);
         int Ksum=0;
@@ -24,14 +24,14 @@ public:
             {
                 LeftSum[i]=Ksum;
                 LeftIdx[i]=i;
-            }                
+            }
             else
             {
                 LeftSum[i]=LeftSum[i-1];
                 LeftIdx[i]=LeftIdx[i-1];
-            }                
+            }
         }
-        
+
         vector<int>RightSum(N);
         vector<int>RightIdx(N);
         Ksum=0;
@@ -47,15 +47,15 @@ public:
             {
                 RightSum[i]=Ksum;
                 RightIdx[i]=i;
-            }                
+            }
             else
             {
                 RightSum[i]=RightSum[i+1];
                 RightIdx[i]=RightIdx[i+1];
-            }                
+            }
         }
-        
-        int temp=INT_MIN;
+
+        int temp=std::numeric_limits<int>::min();
         vector<int>result(3);
         for (int i=k; i<=N-k-1; i++)
         {
@@ -65,7 +65,7 @@ public:
                 result = {LeftIdx[i-1]-k+1,i,RightIdx[i+k]};
             }
         }
-        
-        return result;        
+
+        return result;
     }
 };

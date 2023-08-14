@@ -1,14 +1,14 @@
 class Solution {
 public:
-    int minNumberOfSemesters(int n, vector<vector<int>>& dependencies, int k) 
+    int minNumberOfSemesters(int n, vector<vector<int>>& dependencies, int k)
     {
-        vector<int>dp(1<<n, INT_MAX/2);
+        vector<int>dp(1<<n, std::numeric_limits<int>::max()/2);
         vector<int>prevState(1<<n, 0);
         vector<int>prevCourse(n,0);
 
-        for (auto x: dependencies)        
-            prevCourse[x[1]-1] |= 1<<(x[0]-1);        
-                    
+        for (auto x: dependencies)
+            prevCourse[x[1]-1] |= 1<<(x[0]-1);
+
         for (int state = 0; state < (1<<n); state++)
         {
             prevState[state] = 0;
@@ -20,7 +20,7 @@ public:
         }
 
         dp[0] = 0;
-        for (int state = 1; state < (1<<n); state++)        
+        for (int state = 1; state < (1<<n); state++)
         {
             for (int subset = state; subset >= 0; subset = (subset-1)&state)
             {

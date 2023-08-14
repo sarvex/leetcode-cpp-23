@@ -14,16 +14,16 @@ public:
         }
         return dist;
     }
-    
-    int closestMeetingNode(vector<int>& edges, int node1, int node2) 
+
+    int closestMeetingNode(vector<int>& edges, int node1, int node2)
     {
         int n = edges.size();
-        
+
         vector<int>dist1 = getDist(edges, node1);
         vector<int>dist2 = getDist(edges, node2);
-        
-        
-        int ret = INT_MAX;
+
+
+        int ret = std::numeric_limits<int>::max();
         int ans = -1;
         for (int i=0; i<n; i++)
         {
@@ -34,11 +34,11 @@ public:
                     ret = max(dist1[i], dist2[i]);
                     ans = i;
                 }
-                else if (max(dist1[i], dist2[i]) == ret)                
+                else if (max(dist1[i], dist2[i]) == ret)
                     ans = min(ans, i);
             }
         }
-        if (ret!=INT_MAX)
+        if (ret!=std::numeric_limits<int>::max())
             return ans;
         else
             return -1;

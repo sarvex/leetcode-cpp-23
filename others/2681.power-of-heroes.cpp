@@ -1,25 +1,26 @@
-using LL = long long;
-LL M = 1e9+7;
+#include <algorithm>
+#include <vector>
+
 class Solution {
+  const static long long M = 1e9 + 7;
+
 public:
-    int sumOfPower(vector<int>& nums) 
-    {
-        sort(nums.begin(), nums.end());
-        
-        LL sum = 0;
-        LL ret = 0;
-        
-        for (int i=0; i<nums.size(); i++)
-        {
-            LL mx = (LL)nums[i]*(LL)nums[i]%M;
-            
-            if (i>=1)
-                sum = sum * 2 % M + (LL)nums[i-1];
-            
-            ret += mx * sum % M + mx * nums[i] % M;
-            ret %= M;
-        }
-        
-        return ret;
+  int sumOfPower(std::vector<int> &nums) {
+    std::sort(nums.begin(), nums.end());
+
+    long long sum = 0;
+    long long ret = 0;
+
+    for (int i = 0; i < nums.size(); i++) {
+      long long mx = (long long) nums[i] * (long long) nums[i] % M;
+
+      if (i >= 1)
+        sum = sum * 2 % M + (long long) nums[i - 1];
+
+      ret += mx * sum % M + mx * nums[i] % M;
+      ret %= M;
     }
+
+    return ret;
+  }
 };

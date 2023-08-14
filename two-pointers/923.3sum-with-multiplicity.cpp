@@ -1,14 +1,11 @@
 #include <algorithm>
-using std::sort;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int threeSumMulti(vector<int> &arr, int target) {
+  int threeSumMulti(std::vector<int> &arr, int target) {
     int n = arr.size();
-    sort(arr.begin(), arr.end());
+    std::sort(arr.begin(), arr.end());
     long count = 0;
     long M = 1e9 + 7;
     for (int k = 1; k < n - 1; k++) {

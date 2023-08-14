@@ -1,21 +1,21 @@
-class Solution {    
+class Solution {
 public:
-    string largestMultipleOfThree(vector<int>& digits) 
+    string largestMultipleOfThree(vector<int>& digits)
     {
         sort(digits.begin(), digits.end());
         reverse(digits.begin(), digits.end());
 
         int n = digits.size();
         digits.insert(digits.begin(), 0);
-        
+
         int dp[n+1][3];
         int prev[n+1][3];
         int pick[n+1][3];
-        dp[0][0] = 0, dp[0][1] = INT_MIN, dp[0][2] = INT_MIN;
-        
-        for (int i=1; i<=n; i++)        
+        dp[0][0] = 0, dp[0][1] = std::numeric_limits<int>::min(), dp[0][2] = std::numeric_limits<int>::min();
+
+        for (int i=1; i<=n; i++)
             for (int j=0; j<3; j++)
-            {                
+            {
                 if (dp[i-1][j] >= dp[i-1][(j-digits[i]%3+3)%3]+1)
                 {
                     dp[i][j] = dp[i-1][j];

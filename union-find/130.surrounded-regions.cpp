@@ -1,20 +1,14 @@
 #include <unordered_map>
-using std::unordered_map;
-
 #include <utility>
-using std::pair;
-
 #include <vector>
-using std::vector;
-
 
 class Solution {
-  unordered_map<int, int> Father;
+  std::unordered_map<int, int> Father;
   int M;
   int N;
 
 public:
-  void solve(vector<vector<char>> &board) {
+  void solve(std::vector<std::vector<char>> &board) {
     M = board.size();
     if (M == 0) return;
     N = board[0].size();
@@ -27,7 +21,7 @@ public:
           Father[i * N + j] = i * N + j;
       }
 
-    vector<pair<int, int>> dir = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    std::vector<std::pair<int, int>> dir = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
     for (int i = 0; i < M; i++)
       for (int j = 0; j < N; j++) {
         if (board[i][j] == 'X') continue;

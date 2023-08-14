@@ -21,7 +21,7 @@ public:
         }
 
     int ret = 0;
-    int cur = INT_MIN;
+    int cur = std::numeric_limits<int>::min();
     while (!pq.empty())
     {
       int h = pq.top()[0];

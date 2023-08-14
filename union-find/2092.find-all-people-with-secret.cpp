@@ -1,14 +1,9 @@
 #include <algorithm>
-using std::sort;
-
 #include <unordered_set>
-using std::unordered_set;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  vector<int> Father;
+  std::vector<int> Father;
   int FindFather(int x) {
     if (Father[x] != x)
       Father[x] = FindFather(Father[x]);
@@ -22,24 +17,24 @@ class Solution {
     else
       Father[x] = y;
   }
-  static bool cmp(vector<int> &a, vector<int> &b) {
+  static bool cmp(std::vector<int> &a, std::vector<int> &b) {
     return a[2] < b[2];
   }
 
 public:
-  vector<int> findAllPeople(int n, vector<vector<int>> &meetings, int firstPerson) {
+  std::vector<int> findAllPeople(int n, std::vector<std::vector<int>> &meetings, int firstPerson) {
     Father.resize(n);
     for (int i = 0; i < n; i++)
       Father[i] = i;
 
     sort(meetings.begin(), meetings.end(), cmp);
 
-    unordered_set<int> Set;
+    std::unordered_set<int> Set;
     Set.insert(0);
     Set.insert(firstPerson);
     Father[firstPerson] = 0;
     for (int i = 0; i < meetings.size(); i++) {
-      unordered_set<int> temp;
+      std::unordered_set<int> temp;
 
       int j;
       for (j = i; j < meetings.size() && meetings[j][2] == meetings[i][2]; j++) {
@@ -59,7 +54,7 @@ public:
       i = j - 1;
     }
 
-    vector<int> rets(Set.begin(), Set.end());
+    std::vector<int> rets(Set.begin(), Set.end());
     return rets;
   }
 };

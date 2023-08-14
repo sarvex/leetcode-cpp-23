@@ -1,12 +1,12 @@
 class Solution {
 public:
-    vector<int> topKFrequent(vector<int>& nums, int k) 
+    vector<int> topKFrequent(vector<int>& nums, int k)
     {
         unordered_map<int,int>freq;
         for (auto x: nums)
             freq[x]++;
 
-        int left = 0, right = INT_MAX;
+        int left = 0, right = std::numeric_limits<int>::max();
         while (left < right)
         {
             int mid = right - (right-left)/2;

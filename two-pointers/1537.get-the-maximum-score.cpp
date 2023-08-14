@@ -1,12 +1,9 @@
 #include <algorithm>
-using std::max;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int maxSum(vector<int> &nums1, vector<int> &nums2) {
+  int maxSum(std::vector<int> &nums1, std::vector<int> &nums2) {
     long m = nums1.size();
     long n = nums2.size();
     long long x = 0, y = 0;
@@ -27,12 +24,12 @@ public:
         y += nums2[j];
         j++;
       } else if (nums1[i] == nums2[j]) {
-        x = max(x, y) + nums1[i];
+        x = std::max(x, y) + nums1[i];
         y = x;
         i++;
         j++;
       }
     }
-    return max(x, y) % M;
+    return std::max(x, y) % M;
   }
 };

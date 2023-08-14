@@ -1,12 +1,9 @@
 #include <algorithm>
-using std::min;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int findLengthOfShortestSubarray(vector<int> &arr) {
+  int findLengthOfShortestSubarray(std::vector<int> &arr) {
     int n = arr.size();
     int ret = n - 1;
 
@@ -20,7 +17,7 @@ public:
       if (i >= 1 && arr[i] < arr[i - 1]) break;
       while (j < n && arr[j] < arr[i])
         j++;
-      ret = min(ret, j - i - 1);
+      ret = std::min(ret, j - i - 1);
     }
 
     return ret;

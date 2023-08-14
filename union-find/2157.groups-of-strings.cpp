@@ -1,14 +1,7 @@
 #include <algorithm>
-using std::max;
-
 #include <string>
-using std::string;
-
 #include <unordered_map>
-using std::unordered_map;
-
 #include <vector>
-using std::vector;
 
 class Solution {
   int Father[20000];
@@ -28,14 +21,14 @@ class Solution {
   }
 
 public:
-  vector<int> groupStrings(vector<string> &words) {
+  std::vector<int> groupStrings(std::vector<std::string> &words) {
     int n = words.size();
     for (int i = 0; i < n; i++)
       Father[i] = i;
 
-    unordered_map<int, int> Map;// num -> idx
+    std::unordered_map<int, int> Map;// num -> idx
     for (int i = 0; i < n; i++) {
-      string &word = words[i];
+      std::string &word = words[i];
       int state = 0;
       for (int i = 0; i < word.size(); i++) {
         int k = word[i] - 'a';
@@ -65,13 +58,13 @@ public:
       }
     }
 
-    unordered_map<int, int> group;
+    std::unordered_map<int, int> group;
     for (int i = 0; i < n; i++)
       group[FindFather(i)] += 1;
 
     int maxGroup = 0;
     for (auto x: group)
-      maxGroup = max(maxGroup, x.second);
+      maxGroup = std::max(maxGroup, x.second);
 
     return {(int) group.size(), maxGroup};
   }

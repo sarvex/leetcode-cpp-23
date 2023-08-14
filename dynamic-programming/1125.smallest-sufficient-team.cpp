@@ -1,13 +1,13 @@
 class Solution {
 public:
-    vector<int> smallestSufficientTeam(vector<string>& req_skills, vector<vector<string>>& people) 
+    vector<int> smallestSufficientTeam(vector<string>& req_skills, vector<vector<string>>& people)
     {
         unordered_map<string,int>skill2num;
         for (int i = 0; i< req_skills.size(); i++)
         {
-            skill2num[req_skills[i]] = i;            
+            skill2num[req_skills[i]] = i;
         }
-        
+
         vector<int>p2s(people.size());
         for (int i=0; i<people.size(); i++)
         {
@@ -21,13 +21,13 @@ public:
             }
             p2s[i] = skillset;
         }
-        
+
         int N = req_skills.size();
         vector<vector<int>>saves(1<<N);  // saves[skillset] : the member ids that fulfill skillset
-        vector<int>dp((1<<N), INT_MAX/2);
-        
+        vector<int>dp((1<<N), std::numeric_limits<int>::max()/2);
+
         dp[0] = 0;
-        
+
         for (int i=0; i<people.size(); i++)
         {
             auto dp2 = dp;
@@ -43,8 +43,7 @@ public:
             }
             dp = dp2;
         }
-        
-        return saves[(1<<N)-1];        
+
+        return saves[(1<<N)-1];
     }
 };
-

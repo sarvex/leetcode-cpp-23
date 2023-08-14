@@ -1,10 +1,10 @@
 class Solution {
 public:
-    int maxSumDivThree(vector<int>& nums) 
+    int maxSumDivThree(vector<int>& nums)
     {
         vector<int>dp(3);
-        dp[1] = INT_MIN;
-        dp[2] = INT_MIN;
+        dp[1] = std::numeric_limits<int>::min();
+        dp[2] = std::numeric_limits<int>::min();
 
         for (int i=0; i<nums.size(); i++)
         {

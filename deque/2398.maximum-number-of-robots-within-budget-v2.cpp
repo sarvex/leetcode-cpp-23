@@ -58,7 +58,7 @@ public:
   int queryRange(int a, int b)// query the maximum value within range [a,b]
   {
     if (b < start || a > end) {
-      return INT_MIN;// check with your own logic
+      return std::numeric_limits<int>::min();// check with your own logic
     }
     if (a <= start && end <= b) {
       return info;// check with your own logic

@@ -15,7 +15,7 @@ class SegTree
         remove(node->right);
         delete node;
         node = NULL;
-        return;            
+        return;
     }
 
     void setStatus(int a, int b, int s)
@@ -39,24 +39,24 @@ class SegTree
         }
         left->setStatus(a,b,s);
         right->setStatus(a,b,s);
-        status = max(left->status,right->status);            
+        status = max(left->status,right->status);
     }
 };
 
 class Solution {
 public:
     vector<vector<int>>results;
-    vector<vector<int>> getSkyline(vector<vector<int>>& buildings) 
+    vector<vector<int>> getSkyline(vector<vector<int>>& buildings)
     {
         if (buildings.size()==0) return {};
-        
-        SegTree* root = new SegTree(0,INT_MAX,0);
+
+        SegTree* root = new SegTree(0,std::numeric_limits<int>::max(),0);
         for (auto q:buildings)
             root->setStatus(q[0],q[1],q[2]);
-        
+
         DFS(root);
-        if (results.back()[1]!=0) results.push_back({INT_MAX,0});
-        
+        if (results.back()[1]!=0) results.push_back({std::numeric_limits<int>::max(),0});
+
         vector<vector<int>>filteredResults;
         for (auto p: results)
         {
@@ -67,9 +67,9 @@ public:
         if (filteredResults.size()!=0 && filteredResults[0][1]==0) filteredResults.erase(filteredResults.begin());
         return filteredResults;
     }
-    
+
     void DFS(SegTree* node)
-    {        
+    {
         if (node->left==NULL)
             results.push_back({node->start,node->status});
         else

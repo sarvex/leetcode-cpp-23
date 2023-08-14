@@ -1,18 +1,13 @@
 #include <algorithm>
-using std::sort;
-
 #include <unordered_map>
-using std::unordered_map;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  unordered_map<int, int> Father;
+  std::unordered_map<int, int> Father;
 
 public:
-  int earliestAcq(vector<vector<int>> &logs, int N) {
-    sort(logs.begin(), logs.end());
+  int earliestAcq(std::vector<std::vector<int>> &logs, int N) {
+    std::sort(logs.begin(), logs.end());
     for (int i = 0; i < N; i++)
       Father[i] = i;
     int groups = N;

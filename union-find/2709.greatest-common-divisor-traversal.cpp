@@ -1,8 +1,5 @@
 #include <unordered_map>
-using std::unordered_map;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
@@ -23,9 +20,9 @@ public:
       Father[x] = y;
   }
 
-  vector<int> Eratosthenes(int n) {
-    vector<int> q(n + 1, 0);
-    vector<int> primes;
+  std::vector<int> Eratosthenes(int n) {
+    std::vector<int> q(n + 1, 0);
+    std::vector<int> primes;
     for (int i = 2; i <= sqrt(n); i++) {
       if (q[i] == 1) continue;
       int j = i * 2;
@@ -41,13 +38,13 @@ public:
     return primes;
   }
 
-  bool canTraverseAllPairs(vector<int> &nums) {
+  bool canTraverseAllPairs(std::vector<int> &nums) {
     int MX = *max_element(nums.begin(), nums.end());
-    vector<int> primes = Eratosthenes(MX);
+    std::vector<int> primes = Eratosthenes(MX);
     int M = primes.size();
 
     int N = nums.size();
-    unordered_map<int, int> idx;
+    std::unordered_map<int, int> idx;
     for (int j = 0; j < primes.size(); j++)
       idx[primes[j]] = j;
 

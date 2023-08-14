@@ -1,31 +1,27 @@
 #include "gtest/gtest.h"
-#include <vector>
 #include <algorithm>
-using namespace std;
-
-#include <unistd.h>
+#include <chrono>// benchmark
 #include <ctime>
+#include <unistd.h>
+#include <vector>
 
-#include <chrono> // benchmark
+#include "315.binary-indexed-tree.h"
+#include "315.divided-conquer.h"
 
-#include <315.binary-indexed-tree.h>
-#include <315.divided-conquer.h>
-
-#include <cstdlib> // atexit
 #include <assert.h>
+#include <cstdlib>// atexit
 #include <dlfcn.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 
 static std::vector<int>
-  count_of_smaller_numbers_after_self_dc(std::vector<int> &nums)
-{
-  static void * handle = dlopen("C:/Users/Yoga/Sources/leecode-cpp-23/cmake-build-debug/tests/Divide_Conquer/315.Count-of-Smaller-Numbers-After-Self/libdivided_conquer_315.so", RTLD_LAZY);
-  assert (handle);
+count_of_smaller_numbers_after_self_dc(std::vector<int> &nums) {
+  static void *handle = dlopen("C:/Users/Yoga/Sources/leecode-cpp-23/cmake-build-debug/tests/Divide_Conquer/315.Count-of-Smaller-Numbers-After-Self/libdivided_conquer_315.so", RTLD_LAZY);
+  assert(handle);
 
   static auto counter =
-    (std::vector<int> (*)(std::vector<int> &))dlsym(handle, "count_v1");
+    (std::vector<int>(*)(std::vector<int> &)) dlsym(handle, "count_v1");
 
   // handle keep alive, no need to release
 
@@ -33,31 +29,28 @@ static std::vector<int>
 }
 
 static std::vector<int>
-  count_of_smaller_numbers_after_self_bit(std::vector<int> &nums)
-{
-  static void * handle = dlopen("C:/Users/Yoga/Sources/leecode-cpp-23/cmake-build-debug/tests/Divide_Conquer/315.Count-of-Smaller-Numbers-After-Self/libbinary_indexed_tree_315.so", RTLD_LAZY);
+count_of_smaller_numbers_after_self_bit(std::vector<int> &nums) {
+  static void *handle = dlopen("C:/Users/Yoga/Sources/leecode-cpp-23/cmake-build-debug/tests/Divide_Conquer/315.Count-of-Smaller-Numbers-After-Self/libbinary_indexed_tree_315.so", RTLD_LAZY);
 
-  assert (handle);
+  assert(handle);
 
   static auto counter =
-    (std::vector<int> (*)(std::vector<int> &))dlsym(handle, "count_v2");
+    (std::vector<int>(*)(std::vector<int> &)) dlsym(handle, "count_v2");
 
   // handle keep alive, no need to release
 
   return counter(nums);
 }
 
-TEST(count_of_smaller_numbers_after_self, consistency)
-{
-  std::vector<int> nums{5,2,6,1};
-  std::vector<int> expected{2,1,1,0};
+TEST(count_of_smaller_numbers_after_self, consistency) {
+  std::vector<int> nums{5, 2, 6, 1};
+  std::vector<int> expected{2, 1, 1, 0};
 
   ASSERT_EQ(count_of_smaller_numbers_after_self_dc(nums), expected);
   ASSERT_EQ(count_of_smaller_numbers_after_self_bit(nums), expected);
 }
 
-TEST(count_of_smaller_numbers_after_self, benchmark)
-{
+TEST(count_of_smaller_numbers_after_self, benchmark) {
   std::vector<int> nums(1e5, 0);
 
   for (auto &num: nums)
@@ -89,5 +82,3 @@ TEST(count_of_smaller_numbers_after_self, benchmark)
 
   ASSERT_EQ(counts1, counts2);
 }
-
-

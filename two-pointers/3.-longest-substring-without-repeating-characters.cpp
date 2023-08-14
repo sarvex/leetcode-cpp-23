@@ -1,16 +1,11 @@
 #include <algorithm>
-using std::max;
-
 #include <string>
-using std::string;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  int lengthOfLongestSubstring(string s) {
-    vector<int> Map(256, 0);
+  int lengthOfLongestSubstring(std::string s) {
+    std::vector<int> Map(256, 0);
     int i = 0;
     int j = 0;
     int result = 0;
@@ -24,7 +19,7 @@ public:
         i++;
       }
 
-      result = max(result, j - i);
+      result = std::max(result, j - i);
     }
 
     return result;

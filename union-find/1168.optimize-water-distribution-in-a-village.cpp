@@ -1,25 +1,20 @@
 #include <algorithm>
-using std::sort;
-
 #include <unordered_map>
-using std::unordered_map;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  static bool cmp(vector<int> &a, vector<int> &b) {
+  static bool cmp(std::vector<int> &a, std::vector<int> &b) {
     return a[2] < b[2];
   }
-  unordered_map<int, int> Father;
+  std::unordered_map<int, int> Father;
 
 public:
-  int minCostToSupplyWater(int n, vector<int> &wells, vector<vector<int>> &pipes) {
+  int minCostToSupplyWater(int n, std::vector<int> &wells, std::vector<std::vector<int>> &pipes) {
     for (int i = 0; i < wells.size(); i++) {
       pipes.push_back({i + 1, 0, wells[i]});
     }
 
-    sort(pipes.begin(), pipes.end(), cmp);
+    std::sort(pipes.begin(), pipes.end(), cmp);
 
     for (int i = 0; i <= wells.size(); i++)
       Father[i] = i;

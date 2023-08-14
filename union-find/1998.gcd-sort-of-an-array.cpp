@@ -1,11 +1,6 @@
-#include <cmath>
-using std::sqrt;
-
 #include <algorithm>
-using std::sort;
-
+#include <cmath>
 #include <vector>
-using std::vector;
 
 class Solution {
   int L = 100005;
@@ -25,8 +20,8 @@ class Solution {
   }
 
 public:
-  vector<int> Eratosthenes(int n) {
-    auto q = vector<int>(n + 1, 0);
+  std::vector<int> Eratosthenes(int n) {
+    auto q = std::vector<int>(n + 1, 0);
 
     for (int i = 2; i <= sqrt(n); i++) {
       if (q[i] == 0) {
@@ -37,7 +32,7 @@ public:
         }
       }
     }
-    vector<int> primes;
+    std::vector<int> primes;
     for (int i = 2; i <= n; i++) {
       if (q[i] == 0)
         primes.push_back(i);
@@ -45,10 +40,10 @@ public:
     return primes;
   }
 
-  bool gcdSort(vector<int> &nums) {
+  bool gcdSort(std::vector<int> &nums) {
     for (int i = 0; i < 100005; i++) Father[i] = i;
 
-    vector<int> primes = Eratosthenes(sqrt(L));
+    std::vector<int> primes = Eratosthenes(sqrt(L));
 
     for (int i = 0; i < nums.size(); i++) {
       int x = nums[i];

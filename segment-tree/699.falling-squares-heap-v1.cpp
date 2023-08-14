@@ -4,7 +4,7 @@ public:
         map<int, int> Map;
 
         Map[0] = 0;
-        Map[INT_MAX] = 0;
+        Map[std::numeric_limits<int>::max()] = 0;
 
         vector<int> results;
         int cur = 0;

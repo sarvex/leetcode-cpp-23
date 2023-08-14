@@ -1,18 +1,15 @@
 #include <unordered_map>
-using std::unordered_map;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  vector<int> Father;
+  std::vector<int> Father;
 
 public:
-  int makeConnected(int n, vector<vector<int>> &connections) {
+  int makeConnected(int n, std::vector<std::vector<int>> &connections) {
     Father.resize(n);
-    vector<int> edges(n, 0);
-    unordered_map<int, int> cables;
-    unordered_map<int, int> elements;
+    std::vector<int> edges(n, 0);
+    std::unordered_map<int, int> cables;
+    std::unordered_map<int, int> elements;
 
     for (int i = 0; i < n; i++)
       Father[i] = i;

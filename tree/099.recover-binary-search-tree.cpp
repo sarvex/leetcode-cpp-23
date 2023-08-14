@@ -8,31 +8,31 @@
  * };
  */
 class Solution {
-    TreeNode* CurMax = new TreeNode(INT_MIN);
+    TreeNode* CurMax = new TreeNode(std::numeric_limits<int>::min());
     TreeNode* first = NULL;
     TreeNode* second = NULL;
 
 public:
-    void recoverTree(TreeNode* root) 
+    void recoverTree(TreeNode* root)
     {
        DFS(root);
-       
+
        int temp = first->val;
        first->val = second->val;
        second->val = temp;
     }
-    
+
     void DFS(TreeNode* node)
     {
         if (node==NULL) return;
-        
+
         DFS(node->left);
-        
+
         if (node->val >= CurMax->val)
             CurMax = node;
         else
         {
-            if (first==NULL) 
+            if (first==NULL)
             {
                 first=CurMax;
                 second=node;
@@ -41,9 +41,9 @@ public:
             else
                 second=node;
         }
-        
+
         DFS(node->right);
-            
+
     }
-    
+
 };

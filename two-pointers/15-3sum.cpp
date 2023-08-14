@@ -1,22 +1,16 @@
 #include <algorithm>
-using std::sort;
-
 #include <iostream>
-using std::cout;
-using std::endl;
-
 #include <vector>
-using std::vector;
 
 class Solution {
 public:
-  vector<vector<int>> threeSum(vector<int> &nums) {
-    sort(nums.begin(), nums.end());
-    vector<vector<int>> result;
+  std::vector<std::vector<int>> threeSum(std::vector<int> &nums) {
+    std::sort(nums.begin(), nums.end());
+    std::vector<std::vector<int>> result;
 
     for (int i = 0; i < nums.size(); i++)
-      cout << nums[i] << " ";
-    cout << endl;
+      std::cout << nums[i] << " ";
+    std::cout << std::endl;
 
     for (int a = 0; a < nums.size(); a++) {
 
@@ -27,7 +21,7 @@ public:
 
       while (left < right) {
         if (nums[left] + nums[right] == sum) {
-          vector<int> temp{nums[a], nums[left], nums[right]};
+          std::vector<int> temp{nums[a], nums[left], nums[right]};
           result.push_back(temp);
           left++;
           right--;

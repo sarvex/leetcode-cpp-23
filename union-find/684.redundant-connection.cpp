@@ -1,14 +1,11 @@
 #include <unordered_map>
-using std::unordered_map;
-
 #include <vector>
-using std::vector;
 
 class Solution {
-  unordered_map<int, int> Father;
+  std::unordered_map<int, int> Father;
 
 public:
-  vector<int> findRedundantConnection(vector<vector<int>> &edges) {
+  std::vector<int> findRedundantConnection(std::vector<std::vector<int>> &edges) {
     for (int i = 0; i < edges.size(); i++) {
       Father[edges[i][0]] = edges[i][0];
       Father[edges[i][1]] = edges[i][1];
