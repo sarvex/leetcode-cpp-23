@@ -1,7 +1,10 @@
+#include <algorithm>
+#include <cassert>
+#include <vector>
+
 class Solution {
 public:
-  std::vector<int> countSmaller(std::vector<int> &nums)
-  {
+  std::vector<int> countSmaller(std::vector<int> &nums) {
     // when iterating to index i, we want to efficiently
     // know how many elements on the right are less than nums[i]
 
@@ -33,11 +36,10 @@ public:
 
     std::vector<int> counts(nums.size(), 0);
 
-    for (int i = nums.size()-1; i >= 0; --i)
-    {
+    for (int i = nums.size() - 1; i >= 0; --i) {
       // query how many elements are less than nums[i]
       int num = nums[i] + delta;
-      counts[i] = tree.query(num-1);
+      counts[i] = tree.query(num - 1);
 
       tree.update(num, 1);
     }
@@ -46,13 +48,11 @@ public:
   }
 
 private:
-  struct binary_indexed_tree
-  {
+  struct binary_indexed_tree {
     std::vector<int> _arr;
 
     binary_indexed_tree(int max_val)
-    : _arr(max_val+1, 0)
-    {
+        : _arr(max_val + 1, 0) {
       // for binary indexed tree, index 0 means nothing,
       // therefore, if we want to store the information of max_val
       // we need an array of which the length is equal to max_val+1
@@ -62,9 +62,8 @@ private:
      *  @param: i  int   inclusive end pos of prefix sum array
      *  @return: prefix sum value
      **/
-    int query(int i)
-    {
-      assert (i < _arr.size());
+    int query(int i) {
+      assert(i < _arr.size());
 
       int ret = 0;
 
@@ -74,10 +73,9 @@ private:
       return ret;
     }
 
-    void update(int i, int val)
-    {
-      assert (i > 0); // logical error to touch array[i]
-      assert (i < _arr.size());
+    void update(int i, int val) {
+      assert(i > 0);// logical error to touch array[i]
+      assert(i < _arr.size());
 
       for (auto j = i; j < _arr.size(); j += lowbit(j))
         _arr[j] += val;

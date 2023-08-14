@@ -1,7 +1,12 @@
+#include <algorithm>
+#include <limits>
+#include <queue>
+#include <vector>
+
 class Solution {
 public:
   int nthUglyNumber(int n) {
-    priority_queue<long, vector<long>, greater<>> pq;
+    std::priority_queue<long, std::vector<long>, std::greater<>> pq;
     pq.push(1);
 
     for (int t = 0; t < n; t++) {

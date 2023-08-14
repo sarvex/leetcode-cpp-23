@@ -1,6 +1,9 @@
+#include <limits>
+#include <vector>
+
 class Solution {
 public:
-  int splitArray(vector<int> &nums, int m) {
+  int splitArray(std::vector<int> &nums, int m) {
     long left = 0, right = std::numeric_limits<int>::max();
 
     while (left < right) {
@@ -14,7 +17,7 @@ public:
     return left;
   }
 
-  bool checkOK(vector<int> &nums, int m, long val) {
+  bool checkOK(std::vector<int> &nums, int m, long val) {
     int count = 0;
     for (int i = 0; i < nums.size(); i++) {
       if (nums[i] > val) return false;

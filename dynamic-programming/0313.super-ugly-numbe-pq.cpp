@@ -1,7 +1,11 @@
+#include <limits>
+#include <set>
+#include <vector>
+
 class Solution {
 public:
-  int nthSuperUglyNumber(int n, vector<int> &primes) {
-    set<long> Set = {1};
+  int nthSuperUglyNumber(int n, std::vector<int> &primes) {
+    std::set<long> Set = {1};
     int count = 0;
     long x;
     while (count < n) {

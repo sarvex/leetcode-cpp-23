@@ -1,9 +1,12 @@
+#include <algorithm>
+#include <vector>
+
 class Solution {
 public:
-  int coinChange(vector<int> &coins, int amount) {
+  int coinChange(std::vector<int> &coins, int amount) {
     if (amount == 0) return 0;
 
-    vector<int> dp(amount + 1, -1);
+    std::vector<int> dp(amount + 1, -1);
 
     for (int i = 0; i < coins.size(); i++) {
       if (coins[i] > amount) continue;
@@ -17,14 +20,14 @@ public:
       int temp = std::numeric_limits<int>::max();
       for (int i = 0; i < coins.size(); i++) {
         if (k - coins[i] > 0 && dp[k - coins[i]] != -1) {
-          temp = min(temp, dp[k - coins[i]] + 1);
+          temp = std::min(temp, dp[k - coins[i]] + 1);
         }
       }
       if (temp == std::numeric_limits<int>::max())
         dp[k] = -1;
       else
         dp[k] = temp;
-
-      return dp[amount];
     }
-  };
+    return dp[amount];
+  }
+};
