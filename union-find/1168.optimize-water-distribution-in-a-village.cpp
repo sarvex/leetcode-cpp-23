@@ -10,13 +10,13 @@ class Solution {
 
 public:
   int minCostToSupplyWater(int n, std::vector<int> &wells, std::vector<std::vector<int>> &pipes) {
-    for (int i = 0; i < wells.size(); i++) {
+    for (size_t i = 0; i < wells.size(); i++) {
       pipes.push_back({i + 1, 0, wells[i]});
     }
 
     std::sort(pipes.begin(), pipes.end(), cmp);
 
-    for (int i = 0; i <= wells.size(); i++)
+    for (size_t i = 0; i <= wells.size(); i++)
       Father[i] = i;
     int ret = 0;
 

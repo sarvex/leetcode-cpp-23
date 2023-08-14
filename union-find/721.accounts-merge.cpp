@@ -10,22 +10,22 @@ class Solution {
 
 public:
   std::vector<std::vector<std::string>> accountsMerge(std::vector<std::vector<std::string>> &accounts) {
-    for (int i = 0; i < accounts.size(); i++)
-      for (int j = 1; j < accounts[i].size(); j++) {
+    for (size_t i = 0; i < accounts.size(); i++)
+      for (size_t j = 1; j < accounts[i].size(); j++) {
         Father[accounts[i][j]] = accounts[i][j];
         Owner[accounts[i][j]] = accounts[i][0];
       }
 
 
-    for (int i = 0; i < accounts.size(); i++) {
-      for (int j = 2; j < accounts[i].size(); j++) {
+    for (size_t i = 0; i < accounts.size(); i++) {
+      for (size_t j = 2; j < accounts[i].size(); j++) {
         if (FindSet(accounts[i][j]) != FindSet(accounts[i][j - 1]))
           Union(accounts[i][j], accounts[i][j - 1]);
       }
     }
 
-    for (int i = 0; i < accounts.size(); i++)
-      for (int j = 1; j < accounts[i].size(); j++) {
+    for (size_t i = 0; i < accounts.size(); i++)
+      for (size_t j = 1; j < accounts[i].size(); j++) {
         std::string parent = FindSet(accounts[i][j]);
         Group[parent].insert(accounts[i][j]);
       }

@@ -6,7 +6,7 @@ public:
     if (nums.size() == 0) return 0;
 
     int i = 0;
-    for (int j = 0; j < nums.size(); j++) {
+    for (size_t j = 0; j < nums.size(); j++) {
       if (j == 0)
         continue;
       else if (nums[j] == nums[i])

@@ -33,7 +33,7 @@ public:
     std::sort(queries.begin(), queries.end(), cmp);
     std::sort(edgeList.begin(), edgeList.end(), cmp);
 
-    int i = 0;
+    size_t i = 0;
     std::vector<bool> ret(queries.size(), 0);
     for (auto &q: queries) {
       while (i < edgeList.size() && edgeList[i][2] < q[2]) {

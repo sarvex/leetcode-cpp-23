@@ -9,7 +9,7 @@ public:
     int temp = std::numeric_limits<int>::max();
     int result;
 
-    for (int a = 0; a < nums.size(); a++) {
+    for (size_t a = 0; a < nums.size(); a++) {
       int left = a + 1;
       int right = nums.size() - 1;
       int sum = target - nums[a];

@@ -45,7 +45,7 @@ public:
 
     int N = nums.size();
     std::unordered_map<int, int> idx;
-    for (int j = 0; j < primes.size(); j++)
+    for (size_t j = 0; j < primes.size(); j++)
       idx[primes[j]] = j;
 
     for (int i = 0; i < N + M; i++)

@@ -45,7 +45,7 @@ public:
 
     std::vector<int> primes = Eratosthenes(sqrt(L));
 
-    for (int i = 0; i < nums.size(); i++) {
+    for (size_t i = 0; i < nums.size(); i++) {
       int x = nums[i];
       for (int p: primes) {
         if (x % p == 0) {
@@ -61,7 +61,7 @@ public:
     }
 
     std::unordered_map<int, int> count;
-    for (int i = 0; i < nums.size(); i++) {
+    for (size_t i = 0; i < nums.size(); i++) {
       count[FindFather(nums[i])] += 1;
     }
     int ret = 0;

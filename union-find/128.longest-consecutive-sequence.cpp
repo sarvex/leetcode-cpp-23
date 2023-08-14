@@ -10,7 +10,7 @@ public:
   int longestConsecutive(std::vector<int> &nums) {
     if (nums.size() == 0) return 0;
 
-    for (int i = 0; i < nums.size(); i++) {
+    for (size_t i = 0; i < nums.size(); i++) {
       Father[nums[i]] = nums[i];
       if (Father.find(nums[i] - 1) != Father.end() && FindSet(nums[i] - 1) != FindSet(nums[i]))
         Union(nums[i] - 1, nums[i]);
@@ -18,7 +18,7 @@ public:
         Union(nums[i] + 1, nums[i]);
     }
 
-    for (int i = 0; i < nums.size(); i++) {
+    for (size_t i = 0; i < nums.size(); i++) {
       Father[nums[i]] = FindSet(nums[i]);
     }
 

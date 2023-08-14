@@ -14,7 +14,7 @@ public:
     int ret = 0;
     for (long x: nums1) {
       std::unordered_map<int, int> Map;
-      for (int i = 0; i < nums2.size(); i++) {
+      for (size_t i = 0; i < nums2.size(); i++) {
         if (x * x % nums2[i] == 0) {
           ret += Map[x * x / nums2[i]];
         }

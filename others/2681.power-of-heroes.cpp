@@ -11,7 +11,7 @@ public:
     long long sum = 0;
     long long ret = 0;
 
-    for (int i = 0; i < nums.size(); i++) {
+    for (size_t i = 0; i < nums.size(); i++) {
       long long mx = (long long) nums[i] * (long long) nums[i] % M;
 
       if (i >= 1)

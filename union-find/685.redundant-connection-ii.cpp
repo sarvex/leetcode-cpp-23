@@ -20,10 +20,10 @@ public:
       }
     }
 
-    for (int i = 1; i <= edges.size(); i++)
+    for (size_t i = 1; i <= edges.size(); i++)
       Father[i] = i;
 
-    for (int i = 0; i < edges.size(); i++) {
+    for (size_t i = 0; i < edges.size(); i++) {
       if (edges[i] == candB) continue;
 
       int u = edges[i][0];

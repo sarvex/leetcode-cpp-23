@@ -22,7 +22,7 @@ public:
     for (int i = 0; i < 26; i++)
       Father[i] = i;
 
-    for (int i = 0; i < A.size(); i++) {
+    for (size_t i = 0; i < A.size(); i++) {
       if (FindFather(A[i] - 'a') != FindFather(B[i] - 'a'))
         Union(A[i] - 'a', B[i] - 'a');
     }

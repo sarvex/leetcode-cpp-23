@@ -8,9 +8,9 @@ public:
     std::vector<int> count(26, 0);
 
     int i = 0;
-    int result = 0;
+    size_t result = 0;
 
-    for (int j = 0; j < s.size(); j++) {
+    for (size_t j = 0; j < s.size(); j++) {
       count[s[j] - 'A']++;
 
       while (j - i + 1 - *max_element(count.begin(), count.end()) > k) {

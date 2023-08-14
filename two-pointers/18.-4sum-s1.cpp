@@ -9,13 +9,13 @@ public:
 
     std::sort(nums.begin(), nums.end());
 
-    for (int a = 0; a < nums.size(); a++) {
+    for (size_t a = 0; a < nums.size(); a++) {
       if (nums[a] * 4 > target) break;
       if (nums[a] + nums.back() * 3 < target) continue;
 
       if (a > 0 && nums[a] == nums[a - 1]) continue;
 
-      for (int b = a + 1; b < nums.size(); b++) {
+      for (size_t b = a + 1; b < nums.size(); b++) {
         if (nums[a] + nums[b] * 3 > target) break;
         if (nums[a] + nums[b] + nums.back() * 2 < target) continue;
 

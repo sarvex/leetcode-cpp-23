@@ -45,7 +45,7 @@ public:
 
     std::vector<int> primes = Eratosthenes(sqrt(L));
 
-    for (int i = 0; i < nums.size(); i++) {
+    for (size_t i = 0; i < nums.size(); i++) {
       int x = nums[i];
       for (auto p: primes) {
         // if (p > x) break;        // 28.79%, 921ms
@@ -66,7 +66,7 @@ public:
     auto nums1 = nums;
     sort(nums1.begin(), nums1.end());
 
-    for (int i = 1; i < nums.size(); i++) {
+    for (size_t i = 1; i < nums.size(); i++) {
       if (FindFather(nums[i]) != FindFather(nums1[i]))
         return false;
     }

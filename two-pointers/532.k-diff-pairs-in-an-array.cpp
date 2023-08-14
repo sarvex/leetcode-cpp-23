@@ -8,8 +8,8 @@ public:
 
     std::sort(nums.begin(), nums.end());
 
-    int i = 0;
-    int j = 1;
+    size_t i = 0;
+    size_t j = 1;
     int count = 0;
 
     while (j < nums.size()) {

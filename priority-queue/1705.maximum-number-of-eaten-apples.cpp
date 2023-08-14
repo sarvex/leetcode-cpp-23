@@ -8,7 +8,7 @@ public:
   int eatenApples(std::vector<int> &apples, std::vector<int> &days) {
     int count = 0;
     std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, std::greater<std::pair<int, int>>> pq;
-    int i = 0;
+    size_t i = 0;
     while (i < apples.size() || !pq.empty()) {
       while (!pq.empty() && pq.top().first <= i)
         pq.pop();

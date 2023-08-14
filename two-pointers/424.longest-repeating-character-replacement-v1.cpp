@@ -7,10 +7,10 @@ class Solution {
 
 public:
   int characterReplacement(std::string s, int k) {
-    int ret = 0;
-    int j = 0;
+    size_t ret = 0;
+    size_t j = 0;
     count.resize(26);
-    for (int i = 0; i < s.size(); i++) {
+    for (size_t i = 0; i < s.size(); i++) {
       while (j < s.size() && checkOK(s, j, j - i + 1, k))
         j++;
       ret = std::max(ret, j - i);

@@ -5,7 +5,7 @@ class Solution {
 public:
   std::vector<std::vector<int>> kClosest(std::vector<std::vector<int>> &points, int K) {
     std::priority_queue<std::pair<long long, int>> pq;
-    for (int i = 0; i < points.size(); i++) {
+    for (size_t i = 0; i < points.size(); i++) {
       long long x1 = points[i][0];
       long long x2 = points[i][1];
       long long d = x1 * x1 + x2 * x2;

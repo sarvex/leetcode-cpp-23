@@ -11,7 +11,7 @@ public:
   int countDistinct(std::vector<int> &nums, int k, int p) {
     int n = nums.size();
     power[0] = 1;
-    for (int i = 1; i < B; i++)// power[i] = B^i;
+    for (size_t i = 1; i < B; i++)// power[i] = B^i;
       power[i] = power[i - 1] * B;
 
     int ret = 0;

@@ -8,11 +8,11 @@ public:
     std::sort(nums.begin(), nums.end());
     std::vector<std::vector<int>> result;
 
-    for (int i = 0; i < nums.size(); i++)
+    for (size_t i = 0; i < nums.size(); i++)
       std::cout << nums[i] << " ";
     std::cout << std::endl;
 
-    for (int a = 0; a < nums.size(); a++) {
+    for (size_t a = 0; a < nums.size(); a++) {
 
       int sum = -nums[a];
 

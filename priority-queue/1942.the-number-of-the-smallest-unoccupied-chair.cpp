@@ -9,7 +9,7 @@ public:
     for (int i = 0; i < times.size(); i++)
       empty.push(i);
 
-    for (int i = 0; i < times.size(); i++)
+    for (size_t i = 0; i < times.size(); i++)
       times[i].push_back(i);
     std::sort(times.begin(), times.end());
 

@@ -7,8 +7,8 @@ public:
   int lengthOfLongestSubstring(std::string s) {
     std::unordered_map<int, int> Map;
     int i = 0;
-    int result = 0;
-    for (int j = 0; j < s.size(); j++) {
+    size_t result = 0;
+    for (size_t j = 0; j < s.size(); j++) {
       if (Map.find(s[j]) != Map.end())
         i = std::max(i, Map[s[j]] + 1);
       Map[s[j]] = j;

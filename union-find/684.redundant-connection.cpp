@@ -11,7 +11,7 @@ public:
       Father[edges[i][1]] = edges[i][1];
     }
 
-    for (int i = 0; i < edges.size(); i++) {
+    for (size_t i = 0; i < edges.size(); i++) {
       if (FindSet(edges[i][0]) == FindSet(edges[i][1]))
         return edges[i];
       else

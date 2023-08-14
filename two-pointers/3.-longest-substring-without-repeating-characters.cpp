@@ -7,8 +7,8 @@ public:
   int lengthOfLongestSubstring(std::string s) {
     std::vector<int> Map(256, 0);
     int i = 0;
-    int j = 0;
-    int result = 0;
+    size_t j = 0;
+    size_t result = 0;
 
     while (j < s.size()) {
       if (Map[s[j]] == 0) {

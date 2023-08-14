@@ -5,7 +5,7 @@ class Solution {
 public:
   std::string minWindow(std::string s, std::string t) {
     std::unordered_map<char, int> Table;
-    for (int i = 0; i < t.size(); i++)
+    for (size_t i = 0; i < t.size(); i++)
       Table[t[i]]++;
     int M = Table.size();
     int ret_start = 0;
@@ -13,10 +13,10 @@ public:
 
     std::unordered_map<char, int> Map;
     int i = 0;
-    int Len = std::numeric_limits<int>::max();
+    size_t Len = std::numeric_limits<int>::max();
     std::string result;
     int count = 0;
-    for (int j = 0; j < s.size(); j++) {
+    for (size_t j = 0; j < s.size(); j++) {
       Map[s[j]]++;
       if (Map[s[j]] == Table[s[j]])
         count++;

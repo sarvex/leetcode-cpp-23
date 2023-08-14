@@ -7,7 +7,7 @@ public:
     int count = 0;
     std::sort(nums.begin(), nums.end());
 
-    for (int a = 0; a < nums.size(); a++) {
+    for (size_t a = 0; a < nums.size(); a++) {
       int sum = target - nums[a];
       int left = a + 1;
       int right = nums.size() - 1;

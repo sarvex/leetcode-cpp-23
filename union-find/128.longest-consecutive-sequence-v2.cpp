@@ -10,7 +10,7 @@ public:
       Set.insert(a);
 
     int result = 0;
-    for (int i = 0; i < nums.size(); i++) {
+    for (size_t i = 0; i < nums.size(); i++) {
       if (Set.find(nums[i] - 1) != Set.end())
         continue;
       int j = nums[i] + 1;

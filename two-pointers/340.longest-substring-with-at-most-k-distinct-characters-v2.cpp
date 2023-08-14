@@ -8,8 +8,8 @@ public:
     std::vector<int> freq(256, 0);
     int count = 0;
     int i = 0;
-    int ret = 0;
-    for (int j = 0; j < s.size(); j++) {
+    size_t ret = 0;
+    for (size_t j = 0; j < s.size(); j++) {
       freq[s[j]]++;
       if (freq[s[j]] == 1) count++;
 

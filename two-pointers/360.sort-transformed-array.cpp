@@ -7,7 +7,7 @@ public:
     std::vector<int> result;
 
     if (a == 0) {
-      for (int i = 0; i < nums.size(); i++)
+      for (size_t i = 0; i < nums.size(); i++)
         result.push_back(b * nums[i] + c);
       if (b < 0)
         std::reverse(result.begin(), result.end());
