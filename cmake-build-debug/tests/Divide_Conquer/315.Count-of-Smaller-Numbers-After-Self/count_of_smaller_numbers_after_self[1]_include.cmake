@@ -1,5 +1,0 @@
-if(EXISTS "C:/Users/Yoga/Sources/leecode-cpp-23/cmake-build-debug/tests/Divide_Conquer/315.Count-of-Smaller-Numbers-After-Self/count_of_smaller_numbers_after_self[1]_tests.cmake")
-  include("C:/Users/Yoga/Sources/leecode-cpp-23/cmake-build-debug/tests/Divide_Conquer/315.Count-of-Smaller-Numbers-After-Self/count_of_smaller_numbers_after_self[1]_tests.cmake")
-else()
-  add_test(count_of_smaller_numbers_after_self_NOT_BUILT count_of_smaller_numbers_after_self_NOT_BUILT)
-endif()

@@ -1,5 +1,0 @@
-if(EXISTS "C:/Users/Yoga/Sources/leecode-cpp-23/cmake-build-debug/tests/Dynamic_Programming/072.Edit-Distance/edit_distance_test[1]_tests.cmake")
-  include("C:/Users/Yoga/Sources/leecode-cpp-23/cmake-build-debug/tests/Dynamic_Programming/072.Edit-Distance/edit_distance_test[1]_tests.cmake")
-else()
-  add_test(edit_distance_test_NOT_BUILT edit_distance_test_NOT_BUILT)
-endif()

@@ -1,5 +1,0 @@
-if(EXISTS "C:/Users/Yoga/Sources/leecode-cpp-23/cmake-build-debug/tests/Dynamic_Programming/1027.Longest-Arithmetic-Sequence/longest_arithmetic_sequence_test[1]_tests.cmake")
-  include("C:/Users/Yoga/Sources/leecode-cpp-23/cmake-build-debug/tests/Dynamic_Programming/1027.Longest-Arithmetic-Sequence/longest_arithmetic_sequence_test[1]_tests.cmake")
-else()
-  add_test(longest_arithmetic_sequence_test_NOT_BUILT longest_arithmetic_sequence_test_NOT_BUILT)
-endif()

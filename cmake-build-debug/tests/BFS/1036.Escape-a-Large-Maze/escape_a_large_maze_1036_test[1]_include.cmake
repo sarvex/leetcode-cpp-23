@@ -1,5 +1,0 @@
-if(EXISTS "C:/Users/Yoga/Sources/leecode-cpp-23/cmake-build-debug/tests/BFS/1036.Escape-a-Large-Maze/escape_a_large_maze_1036_test[1]_tests.cmake")
-  include("C:/Users/Yoga/Sources/leecode-cpp-23/cmake-build-debug/tests/BFS/1036.Escape-a-Large-Maze/escape_a_large_maze_1036_test[1]_tests.cmake")
-else()
-  add_test(escape_a_large_maze_1036_test_NOT_BUILT escape_a_large_maze_1036_test_NOT_BUILT)
-endif()
